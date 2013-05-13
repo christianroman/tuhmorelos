@@ -62,6 +62,6 @@ hotels = [
 
 hotels.each do |id, name, street, district, zipcode, destination_id, phone, website, email, rate_id, image|
 
-    Hotel.create( id:id, name:name, street:street, district:district, destination_id:destination_id, phone:phone, website:website, email:email, rate_id:rate_id, image:image )
+    Hotel.create( id:id, name:name, street:street, district:district, zipcode:zipcode, destination_id:destination_id, phone:phone, website:website, email:email, rate_id:rate_id, image:image )
 
 end
