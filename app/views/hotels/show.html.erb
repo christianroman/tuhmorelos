@@ -46,6 +46,11 @@
 </p>
 
 <p>
+  <b>Email:</b>
+  <%= @hotel.email %>
+</p>
+
+<p>
   <b>Rate:</b>
   <%= @hotel.rate_id %>
 </p>
@@ -56,14 +61,15 @@
 </p>
 
 <p>
+  <b>Video:</b>
+  <%= @hotel.video %>
+</p>
+
+<p>
   <b>Paypal:</b>
   <%= @hotel.paypal %>
 </p>
 
-<p>
-    <b>Video:</b>
-    <%= @hotel.video %>
-</p>
 
 <%= link_to 'Edit', edit_hotel_path(@hotel) %> |
 <%= link_to 'Back', hotels_path %>

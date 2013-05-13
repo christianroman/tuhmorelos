@@ -10,8 +10,10 @@ one:
   destination_id: 1
   phone: MyString
   website: MyString
+  email: MyString
   rate_id: 1
   image: MyString
+  video: MyString
   paypal: MyString
 
 two:
@@ -24,6 +26,8 @@ two:
   destination_id: 1
   phone: MyString
   website: MyString
+  email: MyString
   rate_id: 1
   image: MyString
+  video: MyString
   paypal: MyString

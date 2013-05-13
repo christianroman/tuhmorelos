@@ -11,10 +11,11 @@
     <th>Destination</th>
     <th>Phone</th>
     <th>Website</th>
+    <th>Email</th>
     <th>Rate</th>
     <th>Image</th>
-    <th>Paypal</th>
     <th>Video</th>
+    <th>Paypal</th>
     <th></th>
     <th></th>
     <th></th>
@@ -31,10 +32,11 @@
     <td><%= hotel.destination_id %></td>
     <td><%= hotel.phone %></td>
     <td><%= hotel.website %></td>
+    <td><%= hotel.email %></td>
     <td><%= hotel.rate_id %></td>
     <td><%= hotel.image %></td>
-    <td><%= hotel.paypal %></td>
     <td><%= hotel.video %></td>
+    <td><%= hotel.paypal %></td>
     <td><%= link_to 'Show', hotel %></td>
     <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
     <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

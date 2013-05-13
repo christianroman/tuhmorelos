@@ -1,8 +1,8 @@
 Tuhmorelos::Application.routes.draw do
-  resources :destinations
-
-
   resources :hotels
+
+
+  resources :destinations
 
 
   devise_for :users
