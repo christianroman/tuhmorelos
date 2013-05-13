@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+destinations = [
+    [1, 'Cuernavaca'],
+    [2, 'Tepoztlan'],
+    [3, 'Cuautla'],
+    [4, 'Tequesquitengo'],
+    [5, 'Oaxtepec']
+]
+
+destinations.each do |id, name|
+    Destination.create( id:id, name:name )
+end
