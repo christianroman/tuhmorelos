@@ -1,4 +1,10 @@
 Tuhmorelos::Application.routes.draw do
+  resources :destinations
+
+
+  resources :hotels
+
+
   devise_for :users
 
   # The priority is based upon order of creation:

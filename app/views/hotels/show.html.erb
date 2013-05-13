@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @hotel.id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @hotel.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @hotel.name %>
+</p>
+
+<p>
+  <b>Street:</b>
+  <%= @hotel.street %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @hotel.district %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%= @hotel.zipcode %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @hotel.destination_id %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @hotel.phone %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @hotel.website %>
+</p>
+
+<p>
+  <b>Rate:</b>
+  <%= @hotel.rate_id %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @hotel.image %>
+</p>
+
+<p>
+  <b>Paypal:</b>
+  <%= @hotel.paypal %>
+</p>
+
+<p>
+    <b>Video:</b>
+    <%= @hotel.video %>
+</p>
+
+<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
+<%= link_to 'Back', hotels_path %>
