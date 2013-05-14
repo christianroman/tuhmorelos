@@ -65,6 +65,19 @@
   <%= @hotel.paypal %>
 </p>
 
+<p>
+    <b>Categorias:</b>
+    <table class="table table-bordered">
+	<tr>
+	    <th>Categoria</th>
+	</tr>
+	<% @hotel.categories.each do |category| %>
+	    <tr>
+		<td><%= link_to category.name, admin_category_path(category) %></td>
+	    </tr>
+	<% end %>
+    </table>
+</p>
 
 <%= link_to 'Editar', edit_admin_hotel_path(@hotel), :class => 'btn' %>
 <%= link_to 'Regresar', admin_hotels_path, :class => 'btn' %>
