@@ -1,12 +1,11 @@
 Tuhmorelos::Application.routes.draw do
 
-  resources :categories
-
-
     namespace :admin do
 
 	root :to => 'hotels#index'
-	
+
+	devise_for :users
+
 	#resources :hotels, :path => 'hoteles'
 	resources :hotels, :path => 'hoteles'
 	resources :fares
@@ -15,7 +14,11 @@ Tuhmorelos::Application.routes.draw do
 
     end
 
-  devise_for :users
+    namespace :api, defaults: { format: 'json' } do
+	resources :hotels
+    end
+
+  #devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
