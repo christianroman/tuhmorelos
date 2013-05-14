@@ -11,7 +11,7 @@ one:
   phone: MyString
   website: MyString
   email: MyString
-  rate_id: 1
+  fare_id: 1
   image: MyString
   video: MyString
   paypal: MyString
@@ -27,7 +27,7 @@ two:
   phone: MyString
   website: MyString
   email: MyString
-  rate_id: 1
+  fare_id: 1
   image: MyString
   video: MyString
   paypal: MyString

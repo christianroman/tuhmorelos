@@ -60,8 +60,49 @@ hotels = [
 
 ]
 
-hotels.each do |id, name, street, district, zipcode, destination_id, phone, website, email, rate_id, image|
+hotels.each do |id, name, street, district, zipcode, destination_id, phone, website, email, fare_id, image|
 
-    Hotel.create( id:id, name:name, street:street, district:district, zipcode:zipcode, destination_id:destination_id, phone:phone, website:website, email:email, rate_id:rate_id, image:image )
+    Hotel.create( id:id, name:name, street:street, district:district, zipcode:zipcode, destination_id:destination_id, phone:phone, website:website, email:email, fare_id:fare_id, image:image )
+
+end
+
+fares = [
+
+    [1, '250-500', 250, 500],
+    [2, '500-800', 500, 800],
+    [3, '800-1200', 800, 1200],
+    [4, '1200-1800', 1200, 1800],
+    [5, '1800-2500', 1800, 2500],
+    [6, '2500-3500', 2500, 3500],
+    [7, 'más de 3500', 3500, 100000]
+
+]
+
+fares.each do |id, name, start_val, end_val|
+    
+    Fare.create( id:id, name:name, start:start_val, end:end_val )
+
+end
+
+
+categories = [
+
+    [1, 'Descansa'],
+    [2, 'Familia y recreación'],
+    [3, 'Romántica'],
+    [4, 'Reuniones y negocios'],
+    [5, 'Salud y Holística'],
+    [6, 'Esotérico'],
+    [7, 'Boutique'],
+    [8, 'Bodas'],
+    [9, 'B&B'],
+    [10, 'Naturaleza'],
+    [11, 'Pet Friendly']
+
+]
+
+categories.each do |id, name|
+
+    Category.create( id:id, name:name )
 
 end

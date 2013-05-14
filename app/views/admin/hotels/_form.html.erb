@@ -1,4 +1,4 @@
-<%= form_for(@hotel) do |f| %>
+<%= form_for [:admin, @hotel] do |f| %>
   <% if @hotel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
@@ -12,62 +12,58 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :user_id, 'Cuenta de usuario' %>
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, 'Nombre' %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :street %><br />
+    <%= f.label :street, 'Calle' %>
     <%= f.text_field :street %>
   </div>
   <div class="field">
-    <%= f.label :district %><br />
+    <%= f.label :district, 'Colonia' %>
     <%= f.text_field :district %>
   </div>
   <div class="field">
-    <%= f.label :zipcode %><br />
+    <%= f.label :zipcode, 'Codigo postal' %>
     <%= f.text_field :zipcode %>
   </div>
   <div class="field">
-    <%= f.label :destination_id %><br />
+    <%= f.label :destination_id, 'Destino' %>
     <%= f.number_field :destination_id %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label :phone, 'Telefonos' %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :website %><br />
+    <%= f.label :website, 'Sitio web' %>
     <%= f.text_field :website %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, 'Email' %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :rate_id %><br />
-    <%= f.number_field :rate_id %>
+    <%= f.label :fare_id, 'Rango de tarifa' %>
+    <%= f.number_field :fare_id %>
   </div>
   <div class="field">
-    <%= f.label :image %><br />
+    <%= f.label :image, 'Imagen principal' %>
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :video %><br />
+    <%= f.label :video, 'URL del video' %>
     <%= f.text_field :video %>
   </div>
   <div class="field">
-    <%= f.label :paypal %><br />
+    <%= f.label :paypal, 'Correo de cuenta Paypal' %>
     <%= f.text_field :paypal %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,47 +1,42 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Id:</b>
-  <%= @hotel.id %>
-</p>
-
-<p>
-  <b>User:</b>
+  <b>Cuenta de usuario:</b>
   <%= @hotel.user_id %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <b>Nombre:</b>
   <%= @hotel.name %>
 </p>
 
 <p>
-  <b>Street:</b>
+  <b>Calle:</b>
   <%= @hotel.street %>
 </p>
 
 <p>
-  <b>District:</b>
+  <b>Colonia:</b>
   <%= @hotel.district %>
 </p>
 
 <p>
-  <b>Zipcode:</b>
+  <b>Codigo Postal:</b>
   <%= @hotel.zipcode %>
 </p>
 
 <p>
-  <b>Destination:</b>
+  <b>Destino:</b>
   <%= @hotel.destination_id %>
 </p>
 
 <p>
-  <b>Phone:</b>
+  <b>Telefonos:</b>
   <%= @hotel.phone %>
 </p>
 
 <p>
-  <b>Website:</b>
+  <b>Sitio web:</b>
   <%= @hotel.website %>
 </p>
 
@@ -51,25 +46,25 @@
 </p>
 
 <p>
-  <b>Rate:</b>
-  <%= @hotel.rate_id %>
+  <b>Rango de tarifas:</b>
+  <%= @hotel.fare_id %>
 </p>
 
 <p>
-  <b>Image:</b>
+  <b>Imagen principal:</b>
   <%= @hotel.image %>
 </p>
 
 <p>
-  <b>Video:</b>
+  <b>URL de Video:</b>
   <%= @hotel.video %>
 </p>
 
 <p>
-  <b>Paypal:</b>
+  <b>Correo de cuenta Paypal:</b>
   <%= @hotel.paypal %>
 </p>
 
 
-<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
-<%= link_to 'Back', hotels_path %>
+<%= link_to 'Editar', edit_admin_hotel_path(@hotel), :class => 'btn' %>
+<%= link_to 'Regresar', admin_hotels_path, :class => 'btn' %>

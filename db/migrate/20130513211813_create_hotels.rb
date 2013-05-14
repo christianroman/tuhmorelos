@@ -11,7 +11,7 @@ class CreateHotels < ActiveRecord::Migration
       t.string :phone
       t.string :website
       t.string :email
-      t.integer :rate_id
+      t.integer :fare_id
       t.string :image
       t.string :video
       t.string :paypal

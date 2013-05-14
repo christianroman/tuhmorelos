@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @destination.name %>
+</p>
+
+
+<%= link_to 'Editar', edit_admin_destination_path(@destination), :class => 'btn' %>
+<%= link_to 'Regresar', admin_destinations_path, :class => 'btn' %>

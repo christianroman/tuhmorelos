@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Categoria:</b>
+  <%= @category.name %>
+</p>
+
+
+<%= link_to 'Editar', edit_admin_category_path(@category), :class => 'btn' %>
+<%= link_to 'Regresar', admin_categories_path, :class => 'btn' %>

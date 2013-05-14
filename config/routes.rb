@@ -1,9 +1,19 @@
 Tuhmorelos::Application.routes.draw do
-  resources :hotels
+
+  resources :categories
 
 
-  resources :destinations
+    namespace :admin do
 
+	root :to => 'hotels#index'
+	
+	#resources :hotels, :path => 'hoteles'
+	resources :hotels, :path => 'hoteles'
+	resources :fares
+	resources :destinations, :path => 'destinos'
+	resources :categories, :path => 'categorias'
+
+    end
 
   devise_for :users
 

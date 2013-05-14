@@ -18,7 +18,7 @@ class HotelsControllerTest < ActionController::TestCase
 
   test "should create hotel" do
     assert_difference('Hotel.count') do
-      post :create, hotel: { destination_id: @hotel.destination_id, district: @hotel.district, email: @hotel.email, id: @hotel.id, image: @hotel.image, name: @hotel.name, paypal: @hotel.paypal, phone: @hotel.phone, rate_id: @hotel.rate_id, street: @hotel.street, user_id: @hotel.user_id, video: @hotel.video, website: @hotel.website, zipcode: @hotel.zipcode }
+      post :create, hotel: { destination_id: @hotel.destination_id, district: @hotel.district, email: @hotel.email, fare_id: @hotel.fare_id, id: @hotel.id, image: @hotel.image, name: @hotel.name, paypal: @hotel.paypal, phone: @hotel.phone, street: @hotel.street, user_id: @hotel.user_id, video: @hotel.video, website: @hotel.website, zipcode: @hotel.zipcode }
     end
 
     assert_redirected_to hotel_path(assigns(:hotel))
@@ -35,7 +35,7 @@ class HotelsControllerTest < ActionController::TestCase
   end
 
   test "should update hotel" do
-    put :update, id: @hotel, hotel: { destination_id: @hotel.destination_id, district: @hotel.district, email: @hotel.email, id: @hotel.id, image: @hotel.image, name: @hotel.name, paypal: @hotel.paypal, phone: @hotel.phone, rate_id: @hotel.rate_id, street: @hotel.street, user_id: @hotel.user_id, video: @hotel.video, website: @hotel.website, zipcode: @hotel.zipcode }
+    put :update, id: @hotel, hotel: { destination_id: @hotel.destination_id, district: @hotel.district, email: @hotel.email, fare_id: @hotel.fare_id, id: @hotel.id, image: @hotel.image, name: @hotel.name, paypal: @hotel.paypal, phone: @hotel.phone, street: @hotel.street, user_id: @hotel.user_id, video: @hotel.video, website: @hotel.website, zipcode: @hotel.zipcode }
     assert_redirected_to hotel_path(assigns(:hotel))
   end
 
