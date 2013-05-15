@@ -1,5 +1,5 @@
 module Admin
-    class HotelsController < ApplicationController
+    class HotelsController < BaseController
 	# GET /hotels
 	# GET /hotels.json
 	def index
@@ -7,7 +7,6 @@ module Admin
 
 	    respond_to do |format|
 		format.html # index.html.erb
-		format.json { render json: @hotels }
 	    end
 	end
 

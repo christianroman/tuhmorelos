@@ -1,5 +1,5 @@
 module Admin
-    class DestinationsController < ApplicationController
+    class DestinationsController < BaseController
 	# GET /destinations
 	# GET /destinations.json
 	def index

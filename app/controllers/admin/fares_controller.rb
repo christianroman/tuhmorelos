@@ -1,5 +1,5 @@
 module Admin
-    class FaresController < ApplicationController
+    class FaresController < BaseController
 	# GET /fares
 	# GET /fares.json
 	def index

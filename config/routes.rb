@@ -1,22 +1,39 @@
 Tuhmorelos::Application.routes.draw do
 
+    ###########################################################
+    # Admin
     namespace :admin do
 
 	root :to => 'hotels#index'
 
-	devise_for :users
-
 	#resources :hotels, :path => 'hoteles'
 	resources :hotels, :path => 'hoteles'
-	resources :fares
+	resources :fares, :path => 'rangotarifas'
 	resources :destinations, :path => 'destinos'
 	resources :categories, :path => 'categorias'
 
     end
 
+    ###########################################################
+    # API v0
     namespace :api, defaults: { format: 'json' } do
 	resources :hotels
     end
+
+    ###########################################################
+    # UI
+    
+    root :to => 'home#index'
+
+    #resources :home :
+
+    resources :search, :only => :index
+
+    #resources :home do
+#	collection do
+#	    get 'search'
+#	end
+#    end
 
   #devise_for :users
 
