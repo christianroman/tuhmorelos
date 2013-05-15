@@ -1,25 +1,28 @@
 <h3>Destino</h3>
 
-<%= form_tag('/search', :method => 'get') do %>
+<%= form_tag('/search', :method => 'get', :name => 'search_form') do %>
     
-    <% for destination in @destinations %>
-	<%= check_box_tag "destinations[]", destination.id %> <%= destination.name %>
-    <% end %>
-    <%= check_box_tag('check_all', 'check_all', false, :onClick => "checkAll(this);") %> Todos
+    <div class="section1">
+	<% for destination in @destinations %>
+	    <%= check_box_tag "destinations[]", destination.id %> <%= destination.name %>
+	<% end %>
+	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
+    </div>
 
-    <br /><br />
-    <% for fare in @fares %>
-	<%= check_box_tag "fares[]", fare.id %> <%= fare.name %>
-    <% end %>
-    <%= check_box_tag('check_all', 'check_all', false, :onClick => 'checkAll(this)') %> Todos
+    <div class="section2">
+	<% for fare in @fares %>
+	   <%= check_box_tag "fares[]", fare.id %> <%= fare.name %>
+	<% end %>
+	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
+    </div>
 
-    <br /><br />
-    <% for category in @categories %>
-	<%= check_box_tag "categories[]", category.id %> <%= category.name %>
-    <% end %>
-    <%= check_box_tag('check_all', 'check_all', false, :onClick => 'checkAll(this)') %> Todos
+    <div class="section3">
+	<% for category in @categories %>
+	    <%= check_box_tag "categories[]", category.id %> <%= category.name %>
+	<% end %>
+	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
 
-    <br /><br />
+    </div>
     <%= submit_tag("Search") %>
 
 <% end %>
