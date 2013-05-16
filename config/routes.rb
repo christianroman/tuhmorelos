@@ -15,7 +15,7 @@ Tuhmorelos::Application.routes.draw do
     end
 
     ###########################################################
-    # API v0
+    # API v1
     namespace :api, defaults: { format: 'json' } do
 	resources :hotels
     end
@@ -28,6 +28,8 @@ Tuhmorelos::Application.routes.draw do
     #resources :home :
 
     resources :search, :only => :index
+
+    resources :hotels
 
     #resources :home do
 #	collection do

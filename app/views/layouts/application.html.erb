@@ -7,6 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <%= yield %>
+
+    <div class="header"></div>
+
+    <div class="main_image"></div>
+
+    <div class="logos">
+	<a href="#" class="logo_left"></a>
+	<a href="#" class="logo_middle"></a>
+	<a href="#" class="logo_right"></a>
+    </div>
+
+    <div class="context">
+
+	<%= yield %>
+
+    </div>
+
+    <div class="footer">
+    </div>
+
 </body>
 </html>

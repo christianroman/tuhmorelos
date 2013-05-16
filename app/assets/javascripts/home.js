@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('.check_all').change(function(){
-	var divParent = $(this).parent('div');
+	var divParent = $(this).closest('div');
 	var checkboxes = divParent.find('input:checkbox');
 
 	if( $(this).is(':checked') ) 

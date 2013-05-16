@@ -1,28 +1,48 @@
-<h3>Destino</h3>
+<h4>CONSTRUYE TU CRITERIO DE BÚSQUEDA CON LAS SIGUIENTES OPCIONES</h4>
 
 <%= form_tag('/search', :method => 'get', :name => 'search_form') do %>
     
-    <div class="section1">
-	<% for destination in @destinations %>
-	    <%= check_box_tag "destinations[]", destination.id %> <%= destination.name %>
-	<% end %>
-	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
-    </div>
+    <div class="box1">
 
-    <div class="section2">
-	<% for fare in @fares %>
-	   <%= check_box_tag "fares[]", fare.id %> <%= fare.name %>
-	<% end %>
-	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
-    </div>
-
-    <div class="section3">
-	<% for category in @categories %>
-	    <%= check_box_tag "categories[]", category.id %> <%= category.name %>
-	<% end %>
-	<%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos
+	<ul class="unstyled">
+	    <% for destination in @destinations %>
+		<li><label><%= check_box_tag "destinations[]", destination.id %> <%= destination.name %></label></li>
+	    <% end %>
+	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+	</ul>
 
     </div>
+
+    <div class="box2">
+
+	<ul class="unstyled">
+
+	    <% for fare in @fares %>
+		<li><label><%= check_box_tag "fares[]", fare.id %> <%= fare.name %></label></li>
+	    <% end %>
+	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+
+	</ul>
+
+    </div>
+
+    <div class="box3">
+
+	<ul class="unstyled">
+
+	    <% for category in @categories %>
+		<li><label><%= check_box_tag "categories[]", category.id %> <%= category.name %></label></li>
+	    <% end %>
+	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+
+	</ul>
+
+    </div>
+
+    <div class="clearfix"></div>
+
+    <br /><br />
+
     <%= submit_tag("Buscar") %>
 
 <% end %>

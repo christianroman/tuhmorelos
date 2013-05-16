@@ -3,7 +3,7 @@
 <ul>
 
 <% for hotel in @hotels %>
-    <li><%= hotel.name %></li>
+    <li><%= link_to hotel.name, hotel_path(hotel) %></li>
 <% end %>
 
 </ul>
