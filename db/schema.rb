@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514002043) do
+ActiveRecord::Schema.define(:version => 20130524203138) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20130514002043) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "guests", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "hotels", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -51,11 +59,42 @@ ActiveRecord::Schema.define(:version => 20130514002043) do
     t.string   "website"
     t.string   "email"
     t.integer  "fare_id"
-    t.string   "image"
     t.string   "video"
     t.string   "paypal"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.float    "lat"
+    t.float    "lng"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "hotel_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.integer  "room_id"
+    t.integer  "guest_id"
+    t.date     "check_in"
+    t.date     "check_out"
+    t.integer  "status_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.integer  "hotel_id"
+    t.string   "name"
+    t.decimal  "fare",       :precision => 10, :scale => 0
+    t.integer  "existence"
+    t.integer  "available"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "users", :force => true do |t|

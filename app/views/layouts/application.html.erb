@@ -9,22 +9,25 @@
 <body>
 
     <div class="header"></div>
+    
+    <%= link_to '', root_path, :class => 'logo' %>
 
-    <div class="main_image"></div>
+    <% if controller_name == 'home' && action_name == 'index' %>
+	<div class="pasos"></div>
+    <% end %>
 
-    <div class="logos">
-	<a href="#" class="logo_left"></a>
-	<a href="#" class="logo_middle"></a>
-	<a href="#" class="logo_right"></a>
-    </div>
+    <div class="wrapper <%= controller_name == 'home' && action_name == 'index' ? 'wrapper_index' : 'wrapper_normal' %>">
 
-    <div class="context">
-
-	<%= yield %>
+	<div class="content">
+	    <%= yield %>
+	</div>
 
     </div>
 
     <div class="footer">
+	<div class="wrapper_width">
+	    <%= render :file => 'layouts/footer' %>
+	</div>
     </div>
 
 </body>

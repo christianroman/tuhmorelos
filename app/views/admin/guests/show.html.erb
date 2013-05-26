@@ -1,0 +1,20 @@
+<% title "Admin/Guest" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @guest.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @guest.email %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @guest.phone %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_admin_guest_path(@guest) %> |
+  <%= link_to "Destroy", [:admin, @guest], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", admin_guests_path %>
+</p>

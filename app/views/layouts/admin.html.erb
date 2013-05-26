@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Tuhmorelos</title>
-  <%= stylesheet_link_tag    "admin", :media => "all" %>
-  <%= javascript_include_tag "admin" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+	<title>Tuhmorelos</title>
+	<%= stylesheet_link_tag    "admin", :media => "all" %>
+	<%= javascript_include_tag "admin" %>
+	<%= csrf_meta_tags %>
+    </head>
+    <body>
 
-    <div class="navbar navbar-inverse">
-	<div class="navbar-inner">
-	    <div class="container">
-		<a class="brand" href="#">Tu Hotel en Morelos Admin</a>
-		<div class="nav-collapse">
-		    <ul class="nav">
-			<li><%= link_to 'Hoteles', admin_hotels_path %></li>
-			<li><%= link_to 'Destinos', admin_destinations_path %></li>
-			<li><%= link_to 'Categorias', admin_categories_path %></li>
-		    </ul>
+	<div class="navbar navbar-inverse">
+	    <div class="navbar-inner">
+		<div class="container">
+		    <a class="brand" href="#">Tu Hotel en Morelos Admin</a>
+		    <div class="nav-collapse">
+
+			<ul class="nav">
+			    <li class="<%= active_class?(admin_hotels_path) %>"><%= link_to 'Hoteles', admin_hotels_path %></li>
+			    <li class="<%= active_class?(admin_destinations_path) %>"><%= link_to 'Destinos', admin_destinations_path %></li>
+			    <li class="<%= active_class?(admin_categories_path) %>"><%= link_to 'Categorias', admin_categories_path %></li>
+			    <li class="<%= active_class?(admin_rooms_path) %>"><%= link_to 'Habitaciones', admin_rooms_path %></li>
+			    <li class="<%= active_class?(admin_guests_path) %>"><%= link_to 'Clientes', admin_guests_path %></li>
+			    <li class="<%= active_class?(admin_reservations_path) %>"><%= link_to 'Reservaciones', admin_reservations_path %></li>
+			</ul>
+
+			<ul class="nav pull-right">
+			    <li class="divider-vertical"></li>
+			    <li class="dropdown">
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario<b class="caret"></b></a>
+			    <ul class="dropdown-menu">
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+			    </ul>
+			    </li>
+			</ul>
+
+		    </div>
 		</div>
 	    </div>
 	</div>
-    </div>
 
-    <div class="container">
-	<div class="row">
-	    <div class="span12">
-		<%= yield %>
-	    </div>
+	<div class="container">
+	    <%= yield %>
 	</div>
-    </div>
 
-</body>
-</html>
+	</body>
+    </html>

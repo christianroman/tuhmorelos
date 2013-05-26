@@ -25,16 +25,18 @@ module Admin
 	# GET /hotels/new.json
 	def new
 	    @hotel = Hotel.new
+	    5.times {@hotel.photos.build}
 
-	    respond_to do |format|
-		format.html # new.html.erb
-		format.json { render json: @hotel }
-	    end
+	    #respond_to do |format|
+		#format.html # new.html.erb
+		#format.json { render json: @hotel }
+	    #end
 	end
 
 	# GET /hotels/1/edit
 	def edit
 	    @hotel = Hotel.find(params[:id])
+	    (5 - @hotel.photos.length).times { @hotel.photos.build }
 	end
 
 	# POST /hotels

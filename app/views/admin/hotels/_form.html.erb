@@ -1,4 +1,4 @@
-<%= form_for [:admin, @hotel] do |f| %>
+<%= form_for([:admin, @hotel], :html => {:multipart => true}) do |f| %>
   <% if @hotel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :destination_id, 'Destino' %>
-    <%= f.number_field :destination_id %>
+    <%= collection_select :hotel, :destination_id, Destination.all, :id, :name, :prompt => 'Seleccionar destino' %>
   </div>
   <div class="field">
     <%= f.label :phone, 'Telefonos' %>
@@ -49,11 +49,7 @@
   </div>
   <div class="field">
     <%= f.label :fare_id, 'Rango de tarifa' %>
-    <%= f.number_field :fare_id %>
-  </div>
-  <div class="field">
-    <%= f.label :image, 'Imagen principal' %>
-    <%= f.text_field :image %>
+    <%= collection_select :hotel, :fare_id, Fare.all, :id, :name, :prompt => 'Seleccionar rango' %>
   </div>
   <div class="field">
     <%= f.label :video, 'URL del video' %>
@@ -63,6 +59,26 @@
     <%= f.label :paypal, 'Correo de cuenta Paypal' %>
     <%= f.text_field :paypal %>
   </div>
+
+  <div>
+      <%= f.fields_for :photos, @hotel.photos do |builder| %>
+	  <% if builder.object.new_record? %>
+	      <%= builder.label :data, "Foto" %>
+	      <%= builder.file_field :data %>
+	  <% end %>
+      <% end %>
+  </div>
+  <br />
+
+  <div>
+      <%= f.fields_for :photos, @hotel.photos do |builder| %>
+	  <% unless builder.object.new_record? %>
+	      <%= image_tag builder.object.data.url %><br />
+	      <%= builder.check_box :_destroy %>
+	  <% end %>
+      <% end %>
+  </div>
+
   <div class="actions">
       <%= f.submit :class => 'btn btn-primary' %>
   </div>

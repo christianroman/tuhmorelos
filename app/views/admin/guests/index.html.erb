@@ -1,0 +1,22 @@
+<h1>Clientes</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Telefono</th>
+  </tr>
+
+  <% for guest in @guests %>
+    <tr>
+      <td><%= link_to guest.name, admin_guest_path(guest) %></td>
+      <td><%= guest.email %></td>
+      <td><%= guest.phone %></td>
+      <td><%= link_to "Editar", edit_admin_guest_path(guest) %></td>
+      <td><%= link_to "Eliminar", [:admin, guest], :confirm => '¿Estas seguro?', :method => :delete, :class => 'btn btn-small btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+
+<%= link_to 'Nuevo cliente', new_admin_guest_path, :class => 'btn btn-primary' %>

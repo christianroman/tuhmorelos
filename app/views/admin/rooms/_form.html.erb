@@ -1,0 +1,36 @@
+<%= form_for [:admin, @room] do |f| %>
+    <% if @room.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@room.errors.count, "error") %></h2>
+	    <ul>
+		<% @room.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		<% end %>
+	    </ul>
+	</div>
+    <% end %>
+
+    <div clas="field">
+	<%= f.label :hotel_id, 'Hotel' %>
+	<%= f.number_field :hotel_id %>
+    </div>
+    <div class="field">
+	<%= f.label :name, 'Nombre' %>
+	<%= f.text_field :name %>
+    </div>
+    <div class="field">
+	<%= f.label :fare, 'Tarifa' %>
+	<%= f.text_field :fare %>
+    </div>
+    <div class="field">
+	<%= f.label :existence, 'Existencia' %>
+	<%= f.number_field :existence %>
+    </div>
+    <div class="field">
+	<%= f.label :available, 'Disponibles' %>
+	<%= f.number_field :available %>
+    </div>
+    <div class="actions">
+	<%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

@@ -1,2 +1,55 @@
+<!--
 <h1><%= @hotel.name %></h1>
-<p>Find me in app/views/hotels/show.html.erb</p>
+-->
+
+<div class="left_side">
+
+    <h2>Reserva en línea</h2>
+
+    <%= form_tag('/', :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+	<div class="control-group">
+	    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
+	    <div class="controls">
+		<%= text_field_tag 'nombre', nil, :placeholder => 'Nombre completo', :class => 'input-xlarge' %>
+	    </div>
+	</div>
+	<div class="control-group">
+	    <%= label_tag 'email', 'E-mail', :class => 'control-label' %>
+	    <div class="controls">
+		<%= text_field_tag 'email', nil, :placeholder => 'ejemplo@dominio.com', :class => 'input-xlarge' %>
+	    </div>
+	</div>
+	<div class="control-group">
+	    <%= label_tag 'telefono', "Teléfono", :class => 'control-label' %>
+	    <div class="controls">
+		<%= text_field_tag 'telefono', nil, :placeholder => '(55) 5626874', :class => 'input-xlarge' %>
+	    </div>
+	</div>
+	<div class="control-group">
+	    <%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
+	    <div class="controls">
+		<%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
+	    </div>
+	</div>
+	<div class="control-group">
+	    <div class="controls">
+		<%= button_tag(type: 'submit', class: 'btn') do %>
+		    Enviar Solicitud
+		<% end %>
+	    </div>
+	</div>
+
+    <% end %>
+
+
+</div>
+
+<div class="right_side">
+
+    <h2><%= @hotel.name %></h2>
+
+</div>
+
+<div class="canvas">
+
+</div>

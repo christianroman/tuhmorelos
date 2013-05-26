@@ -11,6 +11,9 @@ Tuhmorelos::Application.routes.draw do
 	resources :fares, :path => 'rangotarifas'
 	resources :destinations, :path => 'destinos'
 	resources :categories, :path => 'categorias'
+	resources :rooms, :path => 'habitaciones'
+	resources :guests, :path => 'clientes'
+	resources :reservations, :path => 'reservaciones'
 
     end
 

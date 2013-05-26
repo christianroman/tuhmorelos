@@ -1,9 +1,13 @@
 class Hotel < ActiveRecord::Base
-  attr_accessible :destination_id, :district, :email, :fare_id, :id, :image, :name, :paypal, :phone, :street, :user_id, :video, :website, :zipcode
-  belongs_to :fare
+  attr_accessible :destination_id, :district, :email, :fare_id, :id, :image, :name, :paypal, :phone, :street, :user_id, :video, :website, :zipcode, :photos_attributes
+  belongs_to :fare 
   belongs_to :destination
   has_many :categorizations
   has_many :categories, :through => :categorizations
+  has_many :rooms
+
+  has_many :photos, :dependent => :destroy
+  accepts_nested_attributes_for :photos, :reject_if => lambda {|t| t['data'].nil?}, :allow_destroy => true
 
   def self.search(destinations, fares, categories)
       scope = Hotel.scoped({})

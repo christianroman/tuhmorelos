@@ -1,48 +1,59 @@
-<h4>CONSTRUYE TU CRITERIO DE BÚSQUEDA CON LAS SIGUIENTES OPCIONES</h4>
+<h4 class="green">CONSTRUYE TU CRITERIO DE BÚSQUEDA CON LAS SIGUIENTES OPCIONES</h4>
 
 <%= form_tag('/search', :method => 'get', :name => 'search_form') do %>
-    
-    <div class="box1">
 
-	<ul class="unstyled">
-	    <% for destination in @destinations %>
-		<li><label><%= check_box_tag "destinations[]", destination.id %> <%= destination.name %></label></li>
-	    <% end %>
-	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
-	</ul>
+    <div class="boxes">
+
+	<div class="box1">
+
+	    <span class="box_title">DESTINO O ZONA</span>
+
+	    <ul class="unstyled">
+
+		<% for destination in @destinations %>
+		    <li><label><%= check_box_tag "destinations[]", destination.id %> <%= destination.name %></label></li>
+		<% end %>
+		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+	    </ul>
+
+	</div>
+
+	<div class="box2">
+
+	    <span class="box_title">RANGO DE TARIFAS</span>
+
+	    <ul class="unstyled">
+
+		<% for fare in @fares %>
+		    <li><label><%= check_box_tag "fares[]", fare.id %> <%= fare.name %></label></li>
+		<% end %>
+		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+
+	    </ul>
+
+	</div>
+
+	<div class="box3">
+
+	    <span class="box_title">SEGMENTO O VOCACIÓN</span>
+
+	    <ul class="unstyled">
+
+		<% for category in @categories %>
+		    <li><label><%= check_box_tag "categories[]", category.id %> <%= category.name %></label></li>
+		<% end %>
+		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
+
+	    </ul>
+
+	</div>
+
+	<div class="clearfix"></div>
 
     </div>
 
-    <div class="box2">
-
-	<ul class="unstyled">
-
-	    <% for fare in @fares %>
-		<li><label><%= check_box_tag "fares[]", fare.id %> <%= fare.name %></label></li>
-	    <% end %>
-	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
-
-	</ul>
-
-    </div>
-
-    <div class="box3">
-
-	<ul class="unstyled">
-
-	    <% for category in @categories %>
-		<li><label><%= check_box_tag "categories[]", category.id %> <%= category.name %></label></li>
-	    <% end %>
-	    <li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
-
-	</ul>
-
-    </div>
-
-    <div class="clearfix"></div>
-
-    <br /><br />
-
-    <%= submit_tag("Buscar") %>
+    <%= button_tag(type: 'submit', class: 'btn btn-large btn-custom') do %>
+	BUSCAR UN HOTEL
+    <% end %>
 
 <% end %>

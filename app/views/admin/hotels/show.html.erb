@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @hotel.name %></h1>
+
 <p>
   <b>Cuenta de usuario:</b>
   <%= @hotel.user_id %>
-</p>
-
-<p>
-  <b>Nombre:</b>
-  <%= @hotel.name %>
 </p>
 
 <p>
@@ -27,7 +24,7 @@
 
 <p>
   <b>Destino:</b>
-  <%= @hotel.destination_id %>
+  <%= @hotel.destination.name %>
 </p>
 
 <p>
@@ -47,12 +44,7 @@
 
 <p>
   <b>Rango de tarifas:</b>
-  <%= @hotel.fare_id %>
-</p>
-
-<p>
-  <b>Imagen principal:</b>
-  <%= @hotel.image %>
+  <%= @hotel.fare.name %>
 </p>
 
 <p>
@@ -78,6 +70,10 @@
 	<% end %>
     </table>
 </p>
+
+<% @hotel.photos.each do |photo| %>
+    <%= image_tag photo.data.url %><br /><br />
+<% end %>
 
 <%= link_to 'Editar', edit_admin_hotel_path(@hotel), :class => 'btn' %>
 <%= link_to 'Regresar', admin_hotels_path, :class => 'btn' %>

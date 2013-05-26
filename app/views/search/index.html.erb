@@ -1,9 +1,27 @@
 <h1>Hoteles</h1>
 
-<ul>
 
 <% for hotel in @hotels %>
-    <li><%= link_to hotel.name, hotel_path(hotel) %></li>
-<% end %>
 
-</ul>
+    <div class="item clearfix">
+
+	<div class="pre">
+	    <%= image_tag('hotels/1.jpg') %>
+	</div>
+
+	<div class="info">
+
+	    <h4 class="title"><%= hotel.name %></h4>
+	    <%= "#{hotel.street}, #{hotel.district}, C.P. #{hotel.zipcode}" %><br />
+	    <%= hotel.destination.name %><br />
+	    Teléfonos: <%= hotel.phone %><br />
+	    <%= hotel.email %><br />
+
+	    <%= link_to "Solicitar Cotización", hotel_path(hotel), :class => "btn btn-purple" %>
+	    <a href="<%= "http://#{hotel.website}" %>" class="btn btn-green" target="_blank">Visitar Sitio Web</a>
+
+	</div>
+
+    </div>
+
+<% end %>
