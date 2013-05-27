@@ -1,7 +1,10 @@
+//= require zoom-showcase
+
 @import url(http://fonts.googleapis.com/css?family=Oxygen:400,300,700);
 $baseFontFamily: 'Oxygen';
 
 @import 'bootstrap';
+@import 'bootstrap-datepicker';
 
 /* Custom bootstrap styles */
 .btn-custom {
@@ -55,6 +58,12 @@ $baseFontFamily: 'Oxygen';
   -webkit-font-smoothing: antialiased;
 }
 
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+    border-color: rgba(92, 137, 59, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(92, 137, 59, 0.6);
+    outline: 0 none;
+}
+
 /* Constants */
 $greenDarkColor:#395610;
 $purpleTextColor:#610031;
@@ -83,10 +92,13 @@ body{
 .wrapper {
     text-align:center;
     width:$wrapperWidth;
-    min-height:520px;
+    /*min-height:520px;*/
+    min-height:768px;
     height:60%;
     overflow:scroll;
+    /*
     border:1px solid red;
+    */
 }
 
 .wrapper_normal {
@@ -281,9 +293,12 @@ body{
 
 /* Ficha */
 
+.form-canvas {
+    margin:30px auto 10px auto;
+}
+
 .left_side{
-    border:1px solid green;
-    width:510px;
+    width:490px;
     float:left;
 }
 
@@ -292,7 +307,26 @@ body{
     }
 
 .right_side {
-    border:1px solid blue;
-    width:510px;
+    width:534px;
     float:left;
+}
+
+.input_datepicker{
+    width:241px;
+}
+
+#zoom-gallery {
+    margin-top:60px;
+    margin-left:10px;
+    margin-bottom:20px;
+}
+
+#map-canvas {
+    width:480px;
+    height:270px;
+    margin:27px auto 0 auto;
+}
+
+.video-canvas {
+    margin: 120px auto 0 auto;
 }

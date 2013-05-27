@@ -1,46 +1,67 @@
+<% javascript 'hotels_show' %>
+<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' %>
 <!--
 <h1><%= @hotel.name %></h1>
 -->
 
 <div class="left_side">
 
-    <h2>Reserva en línea</h2>
+    <h3>Reserva en línea</h3>
 
-    <%= form_tag('/', :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
-	<div class="control-group">
-	    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
-	    <div class="controls">
-		<%= text_field_tag 'nombre', nil, :placeholder => 'Nombre completo', :class => 'input-xlarge' %>
-	    </div>
-	</div>
-	<div class="control-group">
-	    <%= label_tag 'email', 'E-mail', :class => 'control-label' %>
-	    <div class="controls">
-		<%= text_field_tag 'email', nil, :placeholder => 'ejemplo@dominio.com', :class => 'input-xlarge' %>
-	    </div>
-	</div>
-	<div class="control-group">
-	    <%= label_tag 'telefono', "Teléfono", :class => 'control-label' %>
-	    <div class="controls">
-		<%= text_field_tag 'telefono', nil, :placeholder => '(55) 5626874', :class => 'input-xlarge' %>
-	    </div>
-	</div>
-	<div class="control-group">
-	    <%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
-	    <div class="controls">
-		<%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
-	    </div>
-	</div>
-	<div class="control-group">
-	    <div class="controls">
-		<%= button_tag(type: 'submit', class: 'btn') do %>
-		    Enviar Solicitud
-		<% end %>
-	    </div>
-	</div>
+    <div class="form-canvas">
 
-    <% end %>
+	<%= form_tag('/', :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+	    <div class="control-group">
+		<%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_field_tag 'nombre', nil, :placeholder => 'Nombre completo', :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<%= label_tag 'email', 'E-mail', :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_field_tag 'email', nil, :placeholder => 'ejemplo@dominio.com', :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<%= label_tag 'telefono', "Teléfono", :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_field_tag 'telefono', nil, :placeholder => '(55) 5626874', :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<%= label_tag 'check_in', 'Fecha de llegada', :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_field_tag 'check_in', nil, :placeholder => 'Seleccionar fecha de llegada', :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group" id="check_out_datepicker">
+		<%= label_tag 'check_out', 'Fecha de salida', :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_field_tag 'check_out', nil, :placeholder => 'Seleccionar fecha de salida', :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
+		<div class="controls">
+		    <%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
+		</div>
+	    </div>
+	    <div class="control-group">
+		<div class="controls">
+		    <%= button_tag(type: 'submit', class: 'btn') do %>
+			Enviar Solicitud
+		    <% end %>
+		</div>
+	    </div>
 
+	<% end %>
+
+    </div>
+
+    <div id="map-canvas" data-lat="<%= @hotel.lat %>" data-lng="<%= @hotel.lng %>">
+
+    </div>
 
 </div>
 
@@ -48,8 +69,28 @@
 
     <h2><%= @hotel.name %></h2>
 
-</div>
+    <% unless @hotel.photos.empty? %>
+	<div id="zoom-gallery">
+	    <img src="<%= asset_path 'preloader.gif' %>" class="preloader" width="55" height="18" alt="preloader" />
+	    <ul>
+		<li title="<%= @hotel.photos[0].nil? ? asset_path('sin_foto.png') : @hotel.photos[0].data.url(:medium) %>"></li>
+		<li title="<%= @hotel.photos[1].nil? ? asset_path('sin_foto.png') : @hotel.photos[1].data.url(:medium) %>"></li>
+		<li title="<%= @hotel.photos[2].nil? ? asset_path('sin_foto.png') : @hotel.photos[2].data.url(:medium) %>"></li>
+		<li title="<%= @hotel.photos[3].nil? ? asset_path('sin_foto.png') : @hotel.photos[3].data.url(:medium) %>"></li>
+		<li title="<%= @hotel.photos[4].nil? ? asset_path('sin_foto.png') : @hotel.photos[4].data.url(:medium) %>"></li>
+	    </ul>
+	    <noscript>
+		<div id="noscript">
+		    <img src="<%= @hotel.photos.first.nil? ? asset_path('sin_foto.png') : @hotel.photos.first.data.url(:medium) %>" width="340" height="227" alt="<%= @hotel.name %>" />
+		</div>
+	    </noscript>
+	</div>
+    <% end %>
 
-<div class="canvas">
+    <% unless @hotel.video.nil? %>
+	<div class="video-canvas">
+	    <iframe width="480" height="270" src="http://www.youtube.com/embed/<%= @hotel.video %>" frameborder="0" allowfullscreen></iframe>
+	</div>
+    <% end %>
 
 </div>

@@ -59,6 +59,15 @@
     <%= f.label :paypal, 'Correo de cuenta Paypal' %>
     <%= f.text_field :paypal %>
   </div>
+  <div class="field">
+      <%= f.label :lat, 'Mapa (Latitud)' %>
+      <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+      <%= f.label :lng, 'Mapa (Longitud)' %>
+      <%= f.text_field :lng %>
+  </div>
+
 
   <div>
       <%= f.fields_for :photos, @hotel.photos do |builder| %>
