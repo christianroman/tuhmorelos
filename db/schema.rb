@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529003105) do
+ActiveRecord::Schema.define(:version => 20130529181845) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -83,16 +83,19 @@ ActiveRecord::Schema.define(:version => 20130529003105) do
     t.integer  "status_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "comment"
+    t.integer  "persons"
   end
 
   create_table "rooms", :force => true do |t|
     t.integer  "hotel_id"
     t.string   "name"
-    t.decimal  "fare",       :precision => 10, :scale => 0
+    t.decimal  "fare",        :precision => 10, :scale => 0
     t.integer  "existence"
     t.integer  "available"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "max_persons"
   end
 
   create_table "users", :force => true do |t|

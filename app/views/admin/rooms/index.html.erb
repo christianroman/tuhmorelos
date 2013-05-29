@@ -7,6 +7,7 @@
 	<th>Tarifa</th>
 	<th>Existencia</th>
 	<th>Disponibles</th>
+	<th>No. Personas</th>
 	<th></th>
 	<th></th>
     </tr>
@@ -17,6 +18,7 @@
 	    <td>$<%= room.fare %></td>
 	    <td><%= room.existence %></td>
 	    <td><%= room.available %></td>
+	    <td><%= room.max_persons %></td>
 	    <td><%= link_to "Editar", edit_admin_room_path(room), :class => 'btn btn-small' %></td>
 	    <td><%= link_to "Eliminar", [:admin, room], :confirm => '¿Estas seguro?', :method => :delete, :class => 'btn btn-small btn-danger' %></td>
 	</tr>

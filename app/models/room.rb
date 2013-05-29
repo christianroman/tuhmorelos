@@ -1,5 +1,5 @@
 class Room < ActiveRecord::Base
-    attr_accessible :hotel_id, :name, :fare, :existence, :available
+    attr_accessible :hotel_id, :name, :fare, :existence, :available, :max_persons
     belongs_to :hotel
 
     private

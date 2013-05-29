@@ -1,8 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? %>
+    <div class="alert alert-info">
+	<%= notice %>
+    </div>
+<% end %>
 
 <p>
   <strong>Hotel:</strong>
-  <%= @room.hotel_id %>
+  <%= @room.hotel.name %>
 </p>
 <p>
   <strong>Nombre:</strong>
@@ -10,7 +14,7 @@
 </p>
 <p>
   <strong>Tarifa:</strong>
-  <%= @room.fare %>
+  $<%= @room.fare %>
 </p>
 <p>
   <strong>Existencias:</strong>
@@ -19,6 +23,10 @@
 <p>
   <strong>Disponibles:</strong>
   <%= @room.available %>
+</p>
+<p>
+  <strong>No. Personas</strong>
+  <%= @room.max_persons %>
 </p>
 
 <%= link_to "Editar", edit_admin_room_path(@room), :class => 'btn' %>

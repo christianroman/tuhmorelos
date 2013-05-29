@@ -6,19 +6,19 @@ $(function() {
     var d = new Date();
     d.setDate(d.getDate()-1);
 
-    $('#check_in').datepicker({
+    $('.datepicker-checkin').datepicker({
 	startDate: d,
-	format: 'mm/dd/yyyy',
+	format: 'dd/mm/yyyy',
 	autoclose: true,
 	language: 'es'
     }).on('changeDate', function(e){
 	    var d2 = new Date();
 	    d2.setDate(e.date.getDate()+1);
-            $('#check_out').datepicker('update', d2).datepicker('setStartDate', e.date);
+            $('.datepicker-checkout').datepicker('update', d2).datepicker('setStartDate', e.date);
         })
 
-    $('#check_out').datepicker({
-	format: 'mm/dd/yyyy',
+    $('.datepicker-checkout').datepicker({
+	format: 'dd/mm/yyyy',
 	autoclose: true,
 	language: 'es'
     });
