@@ -45,6 +45,7 @@ $(function() {
     }
 
     /* Google Maps */
+    /*
     var lat = $('#map-canvas').data('lat');
     var lng = $('#map-canvas').data('lng');
 
@@ -59,5 +60,5 @@ $(function() {
 	position: new google.maps.LatLng(lat, lng),
 	map: map    
     });
-
+    */
 });

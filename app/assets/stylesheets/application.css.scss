@@ -322,11 +322,17 @@ body{
 }
 
 #map-canvas {
+    /*
     width:480px;
     height:270px;
+    */
     margin:27px auto 0 auto;
 }
 
 .video-canvas {
     margin: 120px auto 0 auto;
+}
+
+.select_form {
+    width:284px;
 }

@@ -1,7 +1,8 @@
 class Hotel < ActiveRecord::Base
-  attr_accessible :destination_id, :district, :email, :fare_id, :id, :image, :name, :paypal, :phone, :street, :user_id, :video, :website, :zipcode, :lat, :lng, :photos_attributes
+  attr_accessible :destination_id, :district, :email, :fare_id, :id, :name, :paypal, :phone, :street, :user_id, :video, :website, :zipcode, :lat, :lng, :photos_attributes
   belongs_to :fare 
   belongs_to :destination
+  belongs_to :user
   has_many :categorizations
   has_many :categories, :through => :categorizations
   has_many :rooms

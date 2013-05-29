@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524203138) do
+ActiveRecord::Schema.define(:version => 20130529003105) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -63,8 +63,6 @@ ActiveRecord::Schema.define(:version => 20130524203138) do
     t.string   "paypal"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.float    "lat"
-    t.float    "lng"
   end
 
   create_table "photos", :force => true do |t|

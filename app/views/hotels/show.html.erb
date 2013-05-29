@@ -42,6 +42,12 @@
 		</div>
 	    </div>
 	    <div class="control-group">
+		<%= label_tag 'room', 'Habitación', :class => 'control-label' %>
+		<div class="controls">
+		    <%= collection_select(:room, :hotel_id, @hotel.rooms, :id, :name_and_fare, {:prompt => 'Seleccionar Habitación'}, {:class => 'select_form'}) %>
+		</div>
+	    </div>
+	    <div class="control-group">
 		<%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
 		<div class="controls">
 		    <%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
@@ -59,8 +65,8 @@
 
     </div>
 
-    <div id="map-canvas" data-lat="<%= @hotel.lat %>" data-lng="<%= @hotel.lng %>">
-
+    <div id="map-canvas">
+	<iframe width="480" height="270" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps?ie=UTF8&amp;q=hotel+canarios&amp;fb=1&amp;gl=mx&amp;hq=hotel+canarios&amp;Cuernavaca,+MOR&amp;&amp;t=m&amp;iwloc=A&amp;&amp;spn=0.006295,0.006295&amp;output=embed"></iframe>
     </div>
 
 </div>
@@ -89,7 +95,7 @@
 
     <% unless @hotel.video.nil? %>
 	<div class="video-canvas">
-	    <iframe width="480" height="270" src="http://www.youtube.com/embed/<%= @hotel.video %>" frameborder="0" allowfullscreen></iframe>
+	    <iframe width="480" height="270" src="http://www.youtube.com/embed/<%= youtube(@hotel.video) %>" frameborder="0" allowfullscreen></iframe>
 	</div>
     <% end %>
 
