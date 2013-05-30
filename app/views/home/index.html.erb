@@ -8,13 +8,30 @@
 
 	    <span class="box_title">DESTINO O ZONA</span>
 
-	    <ul class="unstyled">
+	    <table class="">
+		<% @destinations.each_with_index do |destination,i| %>
 
-		<% for destination in @destinations %>
-		    <li><label><%= check_box_tag "destinations[]", destination.id %> <%= destination.name %></label></li>
+			<% if i % 2 == 0 %>
+			    <tr>
+			<% end %>
+			
+			<td>
+			    <label><%= check_box_tag "destinations[]", destination.id %> <%= destination.name %></label>
+			</td>
+
+			<% if i % 2 != 0 %>
+			    </tr>
+			<% end %>
+
 		<% end %>
-		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
-	    </ul>
+
+		<td>
+		    <label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label>
+		</td>
+
+		<%= '</tr>'.html_safe %>
+
+	    </table>
 
 	</div>
 
@@ -22,14 +39,30 @@
 
 	    <span class="box_title">RANGO DE TARIFAS</span>
 
-	    <ul class="unstyled">
+	    <table>
+		<% @fares.each_with_index do |fare, i| %>
 
-		<% for fare in @fares %>
-		    <li><label><%= check_box_tag "fares[]", fare.id %> <%= fare.name %></label></li>
+		    <% if i % 2 == 0 %>
+		        <tr>
+		    <% end %>
+			
+		    <td>
+		        <label><%= check_box_tag "fares[]", fare.id %> <%= fare.name %></label>
+		    </td>
+		    
+		    <% if i % 2 != 0 %>
+			</tr>
+		    <% end %>
+
 		<% end %>
-		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
 
-	    </ul>
+		<td>
+		    <label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label>
+		</td>
+
+		<%= '</tr>'.html_safe %>		
+
+	    </table>
 
 	</div>
 
@@ -37,14 +70,31 @@
 
 	    <span class="box_title">SEGMENTO O VOCACIÓN</span>
 
-	    <ul class="unstyled">
+	    <table>
 
-		<% for category in @categories %>
-		    <li><label><%= check_box_tag "categories[]", category.id %> <%= category.name %></label></li>
+		<% @categories.each_with_index do |category, i| %>
+
+		    <% if i % 2 == 0 %>
+			<tr>
+		    <% end %>
+			
+		    <td>
+		        <label><%= check_box_tag "categories[]", category.id %> <%= category.name %></label>
+		    </td>
+
+		    <% if i % 2 != 0 %>
+		        </tr>
+		    <% end %>
+
 		<% end %>
-		<li><label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label></li>
 
-	    </ul>
+		<td>
+		    <label><%= check_box_tag('check_all', 'check_all', false, :class => 'check_all') %> Todos</label>
+		</td>
+
+		<%= '</tr>'.html_safe %>		
+
+	    </table>
 
 	</div>
 

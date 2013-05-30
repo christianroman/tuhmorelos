@@ -92,21 +92,20 @@ body{
 .wrapper {
     text-align:center;
     width:$wrapperWidth;
+    min-height:360px;
     /*min-height:520px;*/
-    min-height:768px;
+    /*min-height:768px;*/
     height:60%;
     overflow:scroll;
-    /*
     border:1px solid red;
-    */
 }
 
 .wrapper_normal {
-    margin:70px auto 0 auto;
+    margin:40px auto 0 auto;
 }
 
 .wrapper_index {
-    margin:140px auto 0 auto;
+    margin:120px auto 0 auto;
 }
 
 .wrapper_width {
@@ -151,7 +150,7 @@ body{
     position:absolute;
     width: 200px;
     height:143px;
-    top: 20px;
+    top: 5px;
     left: 50%;
     margin-left:-100px;
     background:transparent url('logo2.png') no-repeat top center;
@@ -159,17 +158,12 @@ body{
 
 .pasos {
     background:transparent url('pasos2.png') no-repeat top center;
-    /*
-    width:447px;
-    height:173px;
-    margin-left:-223px;
-    */
     width:322px;
     height:125px;
     margin-left:-161px;
     z-index:98;
     position:absolute;
-    top:120px;
+    top:100px;
     left:50%;
 }
 
@@ -178,59 +172,80 @@ body{
     }
 
 .boxes {
-    width:672px;
+    width:910px;
     margin:0 auto 20px auto;
 }
 
 .box1 {
     color:#610031;
     padding-top:20px;
-    padding-bottom:20px;
     text-align:left;
-    width:214px; /*214*/
-    height:336px;
+    width:296px;
+    height:196px;
     float:left;
-    background:transparent url('box1.png') no-repeat top center;
+    background:transparent url('box11.png') no-repeat top center;
+}
+
+.box1 ul li {
+    display:inline;
 }
 
 .box2 {
     color:#0f2556;
     padding-top:20px;
-    padding-bottom:20px;
     text-align:left;
-    width:214px;
-    height:336px;
+    width:296px;
+    height:196px;
     float:left;
-    background:transparent url('box2.png') no-repeat top center;
-    margin-left:15px;
+    background:transparent url('box22.png') no-repeat top center;
+    margin-left:10px;
     margin-top:15px;
 }
 
 .box3 {
     color:#1a3c0c;
     padding-top:20px;
-    padding-bottom:20px;
     text-align:left;
-    width:214px;
-    height:336px;
+    width:296px;
+    height:196px;
     float:left;
-    background:transparent url('box3.png') no-repeat top center;
-    margin-left:14px;
+    background:transparent url('box33.png') no-repeat top center;
+    margin-left:10px;
 }
 
-.box1 ul, .box2 ul, .box3 ul {
-    margin-left:30px;
+.box1 table, .box2 table {
+    margin-left:20px;
 }
 
-.box1 ul li label, .box2 ul li label, .box3 ul li label {
+.box3 table{
+    margin-left:15px;
+}
+
+.box1 table td, .box2 table td {
+    vertical-align:top;
+    padding:0 10px;
+}
+
+.box3 table td {
+    vertical-align:top;
+    padding:0 4px;
+    max-width:140px;
+}
+
+.box1 label, .box2 label, .box3 label {
     font-weight:700;
+}
+
+.box3 label{
+    font-size:12px;
 }
 
 .box_title {
-    font-weight:700;
+    margin-top:2px;
     display:block;
-    margin-left:25px;
-    margin-bottom:7px;
+    text-align:center;
+    font-weight:700;
+    margin-bottom:6px;
 }
 
 .main_footer {
