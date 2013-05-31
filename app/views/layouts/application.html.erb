@@ -9,26 +9,31 @@
 </head>
 <body>
 
-    <div class="header"></div>
-    
-    <%= link_to '', root_path, :class => 'logo' %>
+    <div class="wrapper">
 
-    <% if controller_name == 'home' && action_name == 'index' %>
-	<div class="pasos"></div>
-    <% end %>
+	<div class="header">
+	    <%= link_to '', root_path, :class => 'logo' %>
+	    
+	    <% if controller_name == 'home' && action_name == 'index' %>
+		<div class="pasos"></div>
+	    <% end %>
 
-    <div class="wrapper <%= controller_name == 'home' && action_name == 'index' ? 'wrapper_index' : 'wrapper_normal' %>">
-
-	<div class="content">
-	    <%= yield %>
 	</div>
 
-    </div>
-
-    <div class="footer">
-	<div class="wrapper_width">
-	    <%= render :file => 'layouts/footer' %>
+	<div class="main">
+	    <div class="content <%= controller_name == 'home' && action_name == 'index' ? 'content-index' : '' %>">
+		<%= yield %>
+	    </div>
 	</div>
+
+	<div class="footer">
+	    <div class="wrapper_width">
+		<%= render :file => 'layouts/footer' %>
+	    </div>
+	</div>
+
+	<div class="subfooter">&nbsp;</div>
+
     </div>
 
 </body>

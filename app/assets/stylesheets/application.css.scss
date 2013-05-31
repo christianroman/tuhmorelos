@@ -75,6 +75,8 @@ $wrapperWidth:960px;
 
 html, body {
     height:100%;
+    width:100%;
+    margin:0;
 }
 
 html {
@@ -90,22 +92,10 @@ body{
 }
 
 .wrapper {
+    display:table;
+    height:100%;
     text-align:center;
-    width:$wrapperWidth;
-    min-height:360px;
-    /*min-height:520px;*/
-    /*min-height:768px;*/
-    height:60%;
-    overflow:scroll;
-    border:1px solid red;
-}
-
-.wrapper_normal {
-    margin:40px auto 0 auto;
-}
-
-.wrapper_index {
-    margin:120px auto 0 auto;
+    width:100%;
 }
 
 .wrapper_width {
@@ -115,33 +105,40 @@ body{
     width:$wrapperWidth;
 }
 
-/*
-.content {
-    text-align:center;
-    margin:200px auto 0 auto;
-    background-color:red;
-    height:20%;
+
+.main {
+    display:table-row;
+    height:100%;
 }
-    */
+
+.content {
+    margin:50px auto 0 auto;
+    width:$wrapperWidth;
+}
+
+.content-index {
+    margin-top:125px;
+}
 
 .header {
-    background: #ffdc00 url('header2.png') no-repeat top center;
+    position:relative;
+    display:table-row;
+    background: #ffdc00 url('header.png') no-repeat top center;
     height: 102px;
     width:100%;
-    min-width:$wrapperWidth;
-    margin:0 auto;
 }
 
 .footer {
+    display:table-row;
     background:#a4c400 url('footer.png') repeat-x top center;
     height:109px;
     width:100%;
-    min-width:$wrapperWidth;
-    /*
-    position:fixed;
-    bottom:50px;
-    left:0;
-    */
+}
+
+.subfooter {
+    display:table-row;
+    height:10px;
+    width:100%;
 }
 
 .logo {
@@ -167,13 +164,13 @@ body{
     left:50%;
 }
 
-    .content h4.green, .footer h4.green {
-	color:$greenDarkColor;
-    }
+.green {
+    color:$greenDarkColor;
+}
 
 .boxes {
     width:910px;
-    margin:0 auto 20px auto;
+    margin:0 auto 10px auto;
 }
 
 .box1 {
@@ -284,8 +281,20 @@ body{
 	background:transparent url('thumb.png') no-repeat top center;
 	width:207px;
 	height:165px;
-	height:190px;
     }
+
+	.item .pre .helper {
+	    display:inline-block;
+	    height:137px;
+	    margin:0;
+	    padding:0;
+	    vertical-align:middle;
+	}
+
+	.item .pre .helper img {
+	    max-width:150px;
+	    vertical-align:middle;
+	}
 
     .item .info {
 	text-align:left;
@@ -331,21 +340,20 @@ body{
 }
 
 #zoom-gallery {
-    margin-top:60px;
+    margin-top:100px;
     margin-left:10px;
-    margin-bottom:20px;
+    margin-bottom:180px;
 }
 
 #map-canvas {
-    /*
     width:480px;
     height:270px;
-    */
-    margin:27px auto 0 auto;
+    margin:27px auto 20px auto;
+    overflow:hidden;
 }
 
 .video-canvas {
-    margin: 120px auto 0 auto;
+    margin: 30px auto 0 auto;
 }
 
 .select_form {

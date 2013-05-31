@@ -6,7 +6,7 @@
     <div class="item clearfix">
 
 	<div class="pre">
-	    <%= image_tag('hotels/1.jpg') %>
+	    <span class="helper"></span><%= image_tag hotel.photos.empty? ? 'default.png' : hotel.photos[0].data.url(:thumb) %>
 	</div>
 
 	<div class="info">
