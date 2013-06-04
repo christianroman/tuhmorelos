@@ -1,4 +1,5 @@
 //= require zoom-showcase
+//= require jquery.fancybox
 
 @import url(http://fonts.googleapis.com/css?family=Oxygen:400,300,700);
 $baseFontFamily: 'Oxygen';
@@ -80,7 +81,7 @@ html, body {
 }
 
 html {
-    background: url('garden.jpg') no-repeat center center fixed;
+    background:white url('garden.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

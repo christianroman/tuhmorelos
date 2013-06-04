@@ -58,6 +58,11 @@
 </p>
 
 <p>
+    <b>Descripción:</b>
+    <%= @hotel.description %>
+</p>
+
+<p>
     <b>Categorias:</b>
     <table class="table table-bordered">
 	<tr>
@@ -71,9 +76,16 @@
     </table>
 </p>
 
-<% @hotel.photos.each do |photo| %>
-    <%= image_tag photo.data.url %><br /><br />
-<% end %>
+<h4>Fotografias agregadas:</h4>
+<table class="table table-bordered table-photos">
+    <% @hotel.photos.each do |photo| %>
+	<tr>
+	    <td><%= image_tag photo.data.url %></td>
+	</tr>
+    <% end %>
+</table>
 
 <%= link_to 'Editar', edit_admin_hotel_path(@hotel), :class => 'btn' %>
 <%= link_to 'Regresar', admin_hotels_path, :class => 'btn' %>
+
+<br /><br />

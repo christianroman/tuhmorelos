@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
       @current_hotel = Hotel.find_by_name(request.subdomains.first)
   end
 
+  helper_method :background_images
+
+  def background_images
+      Setting.first.assets
+  end
+
 end

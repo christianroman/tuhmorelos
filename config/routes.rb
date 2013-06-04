@@ -17,6 +17,9 @@ Tuhmorelos::Application.routes.draw do
 	resources :guests, :path => 'clientes'
 	resources :reservations, :path => 'reservaciones'
 
+	get 'ajustes' => 'settings#edit'
+	resources :settings, :path => 'ajustes', :only => ['edit', 'update']
+
     end
 
     ###########################################################

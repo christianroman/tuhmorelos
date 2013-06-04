@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130529181845) do
+ActiveRecord::Schema.define(:version => 20130604153616) do
+
+  create_table "assets", :force => true do |t|
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.integer  "setting_id"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -63,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130529181845) do
     t.string   "paypal"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.text     "description"
   end
 
   create_table "photos", :force => true do |t|
@@ -96,6 +107,11 @@ ActiveRecord::Schema.define(:version => 20130529181845) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.integer  "max_persons"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
