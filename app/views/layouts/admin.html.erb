@@ -21,15 +21,16 @@
 			    <li class="<%= active_class?(admin_rooms_path) %>"><%= link_to 'Habitaciones', admin_rooms_path %></li>
 			    <li class="<%= active_class?(admin_guests_path) %>"><%= link_to 'Clientes', admin_guests_path %></li>
 			    <li class="<%= active_class?(admin_reservations_path) %>"><%= link_to 'Reservaciones', admin_reservations_path %></li>
-			    <li><%= link_to 'Ajustes', '/admin/ajustes' %>
+			    <li><%= link_to 'Ajustes', '/admin/ajustes' %></li>
 			</ul>
 
 			<ul class="nav pull-right">
+			    <li><a href="#">Link</a></li>
 			    <li class="divider-vertical"></li>
 			    <li class="dropdown">
-			    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario<b class="caret"></b></a>
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= admin_user_signed_in? ? current_admin_user.email : 'Usuario' %><b class="caret"></b></a>
 			    <ul class="dropdown-menu">
-				<li><a href="#">Action</a></li>
+				<li><%= link_to 'Cerrar sesión', destroy_admin_user_session_path %></li>
 				<li><a href="#">Another action</a></li>
 				<li><a href="#">Something else here</a></li>
 				<li class="divider"></li>
