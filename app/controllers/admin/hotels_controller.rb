@@ -1,12 +1,19 @@
 module Admin
     class HotelsController < BaseController
+	load_and_authorize_resource
 	# GET /hotels
 	# GET /hotels.json
 	def index
-	    @hotels = Hotel.all
+	    
+	    unless @current_hotel.nil?
+		redirect_to admin_hotel_path(@current_hotel)
+	    else
 
-	    respond_to do |format|
-		format.html # index.html.erb
+		@hotels = Hotel.all
+
+		respond_to do |format|
+		    format.html # index.html.erb
+		end
 	    end
 	end
 
@@ -17,7 +24,6 @@ module Admin
 
 	    respond_to do |format|
 		format.html # show.html.erb
-		format.json { render json: @hotel }
 	    end
 	end
 
@@ -27,10 +33,9 @@ module Admin
 	    @hotel = Hotel.new
 	    5.times {@hotel.photos.build}
 
-	    #respond_to do |format|
-		#format.html # new.html.erb
-		#format.json { render json: @hotel }
-	    #end
+	    respond_to do |format|
+		format.html # new.html.erb
+	    end
 	end
 
 	# GET /hotels/1/edit

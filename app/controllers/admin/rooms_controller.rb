@@ -1,7 +1,14 @@
 module Admin
     class RoomsController < BaseController
+	load_and_authorize_resource
+
 	def index
-	    @rooms = Room.all
+
+	    unless @current_hotel.nil?
+		@rooms = @current_hotel.rooms
+	    else
+		@rooms = Room.all
+	    end
 	end
 
 	def show

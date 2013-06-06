@@ -4,7 +4,9 @@ Tuhmorelos::Application.routes.draw do
     # Admin
     namespace :admin do
 
-	devise_for :users, :path => 'auth', :controllers => { :sessions => 'admin/sessions', :registrations => 'admin/registrations' }, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'registro', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock' }
+	#devise_for :users, :path => 'auth', :controllers => { :sessions => 'admin/sessions', :registrations => 'admin/registrations' }, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'registro', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock' }
+	devise_for :users, :path => 'auth', :controllers => { :sessions => 'admin/sessions' }, :skip => :registrations
+	resources :users, :path => 'usuarios'
 
 	root :to => 'hotels#index'
 

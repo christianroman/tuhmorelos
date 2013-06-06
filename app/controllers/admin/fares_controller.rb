@@ -1,5 +1,6 @@
 module Admin
     class FaresController < BaseController
+	load_and_authorize_resource
 	# GET /fares
 	# GET /fares.json
 	def index

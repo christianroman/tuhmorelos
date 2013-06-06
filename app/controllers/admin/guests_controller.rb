@@ -1,5 +1,7 @@
 module Admin
     class GuestsController < BaseController
+	load_and_authorize_resource
+
 	def index
 	    @guests = Guest.all
 	end

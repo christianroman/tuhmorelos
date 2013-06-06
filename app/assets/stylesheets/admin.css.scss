@@ -1,6 +1,22 @@
 @import 'bootstrap';
 
+.admin-footer{
+    height:20px;
+}
+
+.field label {
+    font-weight:bold;
+}
+
 .table-photos td {
     text-align:center;
     vertical-align:middle;
+}
+
+.input-select {
+    width:285px;
+}
+
+.input-textarea{
+    width:270px;
 }

@@ -1,0 +1,24 @@
+<p>
+    <strong>E-mail:</strong>
+    <%= @user.email %>
+</p>
+
+<p>
+    <strong>Hotel:</strong>
+    <%= link_to @user.hotel.nil? ? 'No disponible' : @user.hotel.name, @user.hotel.nil? ? '#' : admin_hotel_path(@user.hotel) %>
+</p>
+
+<p>
+    <strong>Rol:</strong>
+    <%= @user.roles.map{ |r| r.name }.join(',') %>
+    </p>
+
+<p>
+    <strong>Usuario creado:</strong>
+    <%= @user.created_at.strftime("%d/%m/%Y %I:%M%p") %>
+</p>
+
+<p>
+    <strong>Ultima vez conectado:</strong>
+    <%= @user.last_sign_in_at.strftime("%d/%m/%Y %I:%M%p") %>
+</p>

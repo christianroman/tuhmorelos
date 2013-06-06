@@ -1,5 +1,6 @@
 module Admin
     class DestinationsController < BaseController
+	load_and_authorize_resource
 	# GET /destinations
 	# GET /destinations.json
 	def index

@@ -1,13 +1,17 @@
 module Admin
     class ReservationsController < BaseController
+	load_and_authorize_resource
 	# GET /reservations
 	# GET /reservations.json
 	def index
-	    @reservations = Reservation.all
 
-	    respond_to do |format|
-		format.html # index.html.erb
-		format.json { render json: @reservations }
+	    unless @current_hotel.nil?
+		@reservations = @current_hotel.reservations
+	    else
+		@reservations = Reservation.all
+		respond_to do |format|
+		    format.html # index.html.erb
+		end
 	    end
 	end
 

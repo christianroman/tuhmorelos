@@ -1,5 +1,6 @@
 module Admin
     class SettingsController < BaseController
+	load_and_authorize_resource
 
 	# GET /settings/1
 	# GET /settings/1.json

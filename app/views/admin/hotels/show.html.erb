@@ -3,11 +3,6 @@
 <h1><%= @hotel.name %></h1>
 
 <p>
-  <b>Cuenta de usuario:</b>
-  <%= @hotel.user_id %>
-</p>
-
-<p>
   <b>Calle:</b>
   <%= @hotel.street %>
 </p>
@@ -70,7 +65,7 @@
 	</tr>
 	<% @hotel.categories.each do |category| %>
 	    <tr>
-		<td><%= link_to category.name, admin_category_path(category) %></td>
+		<td><%= link_to category.name, (can? :manage, Category) ? admin_category_path(category) : '#' %></td>
 	    </tr>
 	<% end %>
     </table>
@@ -80,7 +75,7 @@
 <table class="table table-bordered table-photos">
     <% @hotel.photos.each do |photo| %>
 	<tr>
-	    <td><%= image_tag photo.data.url %></td>
+	    <td><%= image_tag photo.data.url(:big) %></td>
 	</tr>
     <% end %>
 </table>

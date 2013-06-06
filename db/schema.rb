@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604153616) do
+ActiveRecord::Schema.define(:version => 20130605223953) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",        :null => false
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(:version => 20130604153616) do
     t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "hotel_id"
   end
 
   create_table "hotels", :force => true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "street"
     t.string   "district"
@@ -96,6 +96,18 @@ ActiveRecord::Schema.define(:version => 20130604153616) do
     t.datetime "updated_at", :null => false
     t.text     "comment"
     t.integer  "persons"
+    t.integer  "hotel_id"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "rooms", :force => true do |t|
@@ -127,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20130604153616) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "hotel_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

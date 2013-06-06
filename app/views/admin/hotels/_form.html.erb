@@ -12,56 +12,69 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id, 'Cuenta de usuario' %>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :name, 'Nombre' %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :street, 'Calle' %>
-    <%= f.text_field :street %>
+    <%= f.text_field :street, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :district, 'Colonia' %>
-    <%= f.text_field :district %>
+    <%= f.text_field :district, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :zipcode, 'Codigo postal' %>
-    <%= f.text_field :zipcode %>
+    <%= f.text_field :zipcode, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :destination_id, 'Destino' %>
-    <%= collection_select :hotel, :destination_id, Destination.all, :id, :name, :prompt => 'Seleccionar destino' %>
+    <%= collection_select :hotel, :destination_id, Destination.all, :id, :name, {}, { :class => 'input-select' } %>
   </div>
   <div class="field">
     <%= f.label :phone, 'Telefonos' %>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :website, 'Sitio web' %>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :email, 'Email' %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :fare_id, 'Rango de tarifa' %>
-    <%= collection_select :hotel, :fare_id, Fare.all, :id, :name, :prompt => 'Seleccionar rango' %>
+    <%= collection_select :hotel, :fare_id, Fare.all, :id, :name, {}, { :class => 'input-select' } %>
   </div>
   <div class="field">
     <%= f.label :video, 'URL del video' %>
-    <%= f.text_field :video %>
+    <%= f.text_field :video, :class => 'input-xlarge' %>
   </div>
   <div class="field">
     <%= f.label :paypal, 'Correo de cuenta Paypal' %>
-    <%= f.text_field :paypal %>
+    <%= f.text_field :paypal, :class => 'input-xlarge' %>
   </div>
   <div class="field">
       <%= f.label :description, 'Descripción' %>
-      <%= f.text_area :description, :cols => 20, :rows => 3 %>
+      <%= f.text_area :description, :cols => 20, :rows => 3, :class => 'input-textarea' %>
+  </div>
+
+  <div class="field">
+      <h4>Categorias:</h4>
+      <table class="table table-bordered table-photos">
+	  <% Category.all.in_groups_of(4) do |group| %>
+	      <tr>
+		  <% group.each do |category| %>
+		      <% if category.nil? %>
+			  <td>&nbsp;</td>
+		      <% else %>
+			  <td><%= check_box_tag :category_ids, category.id, @hotel.categories.include?(category), :name => 'hotel[category_ids][]' %><%= label_tag dom_id(category), category.name %></td>
+		      <% end %>
+		  <% end %>
+	      </tr>
+	  <% end %>
+      </table>
   </div>
 
   <h4>Fotograficas restantes:</h4>
@@ -81,7 +94,7 @@
       <%= f.fields_for :photos, @hotel.photos do |builder| %>
 	  <% unless builder.object.new_record? %>
 	      <tr>
-		  <td><%= image_tag builder.object.data.url %></td>
+		  <td><%= image_tag builder.object.data.url(:big) %></td>
 		  <td><%= builder.check_box :_destroy %><br /><strong>¿Eliminar?</strong></td>
 	      </tr>
 	  <% end %>
