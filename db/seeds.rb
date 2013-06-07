@@ -1,5 +1,11 @@
 # encoding: utf-8
 
+Role.create([{name: 'SuperAdmin'}, {name: 'HotelAdmin'}, {name:'HotelStaff'}])
+User.create( email:'super@test.com', password:'@dmin123', password_confirmation:'@dmin123', role_ids:Array(1) )
+
+#settings
+Setting.create()
+
 destinations = [
     [1, 'Cuernavaca'],
     [2, 'Tepoztlan'],

@@ -1,10 +1,14 @@
 @import 'bootstrap';
 
+.well h1 {
+    margin:0px 5px;
+}
+
 .admin-footer{
     height:20px;
 }
 
-.field label {
+form label {
     font-weight:bold;
 }
 
@@ -19,4 +23,8 @@
 
 .input-textarea{
     width:270px;
+}
+
+.photo{
+    margin:5px 5px 15px 5px;
 }

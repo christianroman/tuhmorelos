@@ -1,86 +1,81 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-bordered table-striped">
+    <tr>
+	<td width="121">&nbsp;</td>
+	<td>
+	    <h2><%= @hotel.name %></h2>
+	</td>
+    </tr>
+    <tr>
+	<td><b>Calle</b></td>
+	<td><%= @hotel.street %></td>
+    </tr>
+    <tr>
+	<td><b>Colonia</b></td>
+	<td><%= @hotel.district %></td>
+    </tr>
+    <tr>
+	<td><b>Codigo Postal</b></td>
+	<td><%= @hotel.zipcode %></td>
+    </tr>
+    <tr>
+	<td><b>Destino</b></td>
+	<td><%= @hotel.destination.name %></td>
+    </tr>
+    <tr>
+	<td><b>Telefonos</b></td>
+	<td><%= @hotel.phone %></td>
+    </tr>
 
-<h1><%= @hotel.name %></h1>
+    <tr>
+	<td><b>Sitio web</b></td>
+	<td><%= @hotel.website %></td>
+    </tr>
 
-<p>
-  <b>Calle:</b>
-  <%= @hotel.street %>
-</p>
+    <tr>
+	<td><b>Email</b></td>
+	<td><%= @hotel.email %></td>
+    </tr>
 
-<p>
-  <b>Colonia:</b>
-  <%= @hotel.district %>
-</p>
+    <tr>
+	<td><b>Rango de tarifas</b></td>
+	<td><%= @hotel.fare.name %></td>
+    </tr>
 
-<p>
-  <b>Codigo Postal:</b>
-  <%= @hotel.zipcode %>
-</p>
+    <tr>
+	<td><b>URL de Video</b></td>
+	<td><%= @hotel.video %></td>
+    </tr>
 
-<p>
-  <b>Destino:</b>
-  <%= @hotel.destination.name %>
-</p>
+    <tr>
+	<td><b>Correo de cuenta Paypal</b></td>
+	<td><%= @hotel.paypal %></td>
+    </tr>
 
-<p>
-  <b>Telefonos:</b>
-  <%= @hotel.phone %>
-</p>
-
-<p>
-  <b>Sitio web:</b>
-  <%= @hotel.website %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @hotel.email %>
-</p>
-
-<p>
-  <b>Rango de tarifas:</b>
-  <%= @hotel.fare.name %>
-</p>
-
-<p>
-  <b>URL de Video:</b>
-  <%= @hotel.video %>
-</p>
-
-<p>
-  <b>Correo de cuenta Paypal:</b>
-  <%= @hotel.paypal %>
-</p>
-
-<p>
-    <b>Descripción:</b>
-    <%= @hotel.description %>
-</p>
-
-<p>
-    <b>Categorias:</b>
-    <table class="table table-bordered">
-	<tr>
-	    <th>Categoria</th>
-	</tr>
-	<% @hotel.categories.each do |category| %>
-	    <tr>
-		<td><%= link_to category.name, (can? :manage, Category) ? admin_category_path(category) : '#' %></td>
-	    </tr>
-	<% end %>
-    </table>
-</p>
-
-<h4>Fotografias agregadas:</h4>
-<table class="table table-bordered table-photos">
-    <% @hotel.photos.each do |photo| %>
-	<tr>
-	    <td><%= image_tag photo.data.url(:big) %></td>
-	</tr>
-    <% end %>
+    <tr>
+	<td><b>Descripción</b></td>
+	<td><%= @hotel.description %></td>
+    </tr>
+    <tr>
+	<td><b>Categorias</b></td>
+	<td>
+	    <ul>
+		<% @hotel.categories.each do |category| %>
+		    <li><%= link_to category.name, (can? :manage, Category) ? admin_category_path(category) : '#' %></li>
+		<% end %>
+	    </ul>
+	</td>
+    </tr>
+    <tr>
+	<td><b>Fotografias agregadas</b></td>
+	<td>
+	    <% @hotel.photos.each do |photo| %>
+		<div class="photo">
+		    <%= image_tag photo.data.url(:big), :class => 'img-rounded' %>
+		</div>
+	    <% end %>
+	</td>
+    </tr>
 </table>
 
 <%= link_to 'Editar', edit_admin_hotel_path(@hotel), :class => 'btn' %>
 <%= link_to 'Regresar', admin_hotels_path, :class => 'btn' %>
-
-<br /><br />

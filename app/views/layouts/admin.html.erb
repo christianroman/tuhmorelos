@@ -56,7 +56,10 @@
 	</div>
 
 	<div class="container">
+
+	    <%= render :partial => 'admin/flash', :locals => {:flash => flash} %>
 	    <%= yield %>
+
 	</div>
 
 	<div class="admin-footer"></div>

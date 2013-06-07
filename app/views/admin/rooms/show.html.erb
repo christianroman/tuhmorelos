@@ -1,26 +1,26 @@
 <p>
-  <strong>Hotel:</strong>
-  <%= @room.hotel.name %>
+<strong>Hotel:</strong>
+<%= @room.hotel.name %>
 </p>
 <p>
-  <strong>Nombre:</strong>
-  <%= @room.name %>
+<strong>Nombre:</strong>
+<%= @room.name %>
 </p>
 <p>
-  <strong>Tarifa:</strong>
-  $<%= @room.fare %>
+<strong>Tarifa:</strong>
+$<%= @room.fare %>
 </p>
 <p>
-  <strong>Existencias:</strong>
-  <%= @room.existence %>
+<strong>Existencias:</strong>
+<%= @room.existence %>
 </p>
 <p>
-  <strong>Disponibles:</strong>
-  <%= @room.available %>
+<strong>Disponibles:</strong>
+<%= @room.available %>
 </p>
 <p>
-  <strong>No. Personas</strong>
-  <%= @room.max_persons %>
+<strong>No. Personas</strong>
+<%= @room.max_persons %>
 </p>
 
 <%= link_to "Editar", edit_admin_room_path(@room), :class => 'btn' %>

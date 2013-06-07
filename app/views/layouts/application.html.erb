@@ -34,12 +34,13 @@
 
 	<div class="subfooter">&nbsp;</div>
 
-	
+	<% unless background_images.empty? %>
 	<div class="background-images" style="display:hidden;">
 	    <% background_images.each do |bg| %>
 		<span data-url="<%= bg.data.url %>"></span>
 	    <% end %>
 	</div>
+	<% end %>
 
     </div>
 
