@@ -1,20 +1,22 @@
-<% title "Admin/Guest" %>
+<table class="table table-bordered table-striped">
+    <tr>
+	<td width="121">&nbsp;</td>
+	<td><h2>Cliente</h2></td>
+    </tr>
+    <tr>
+	<td><b>Nombre</b></td>
+	<td><%= @guest.name %></td>
+    </tr>
+    <tr>
+	<td><b>Email</b></td>
+	<td><%= @guest.email %></td>
+    </tr>
+    <tr>
+	<td><b>Telefono</b></td>
+	<td><%= @guest.phone %></td>
+    </tr>
+</table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @guest.name %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @guest.email %>
-</p>
-<p>
-  <strong>Phone:</strong>
-  <%= @guest.phone %>
-</p>
+<%= link_to "Editar", edit_admin_guest_path(@guest) %>
+<%= link_to "Regresar", admin_guests_path %>
 
-<p>
-  <%= link_to "Edit", edit_admin_guest_path(@guest) %> |
-  <%= link_to "Destroy", [:admin, @guest], :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", admin_guests_path %>
-</p>

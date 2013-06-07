@@ -1,17 +1,20 @@
-<h2><%= @category.name %></h2>
-
-<h4>Hoteles:</h4>
-
-<table class="table table-bordered">
-
+<table class="table table-bordered table-striped">
     <tr>
-	<th>Hotel</th>
+	<td width="121">&nbsp;</td>
+	<td>
+	    <h2><%= @category.name %></h2>
+	</td>
     </tr>
-    <% @category.hotels.each do |hotel| %>
-	<tr>
-	    <td><%= link_to hotel.name, admin_hotel_path(hotel) %></td>
-	</tr>
-    <% end %>
+    <tr>
+	<td><b>Hoteles</b></td>
+	<td>
+	    <ul>
+		<% @category.hotels.each do |hotel| %>
+		    <li><%= link_to hotel.name, admin_hotel_path(hotel) %></li>
+		<% end %>
+	    </ul>
+	</td>
+    </tr>
 </table>
 
 <br />

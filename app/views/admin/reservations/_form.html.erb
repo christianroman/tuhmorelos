@@ -1,39 +1,59 @@
 <%= form_for([:admin, @reservation]) do |f| %>
-  <% if @reservation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+    <% if @reservation.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
 
-      <ul>
-      <% @reservation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	    <ul>
+		<% @reservation.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		<% end %>
+	    </ul>
+	</div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :room_id, 'Habitación' %>
-    <%= f.number_field :room_id %>
-  </div>
-  <div class="field">
-    <%= f.label :guest_id, 'Cliente' %>
-    <%= f.number_field :guest_id %>
-  </div>
-  <div class="field">
-    <%= f.label :check_in, 'Check-in' %>
-    <%= f.date_select :check_in %>
-  </div>
-  <div class="field">
-    <%= f.label :check_out, 'Check-out' %>
-    <%= f.date_select :check_out %>
-  </div>
-  <div class="field">
-    <%= f.label :status_id, 'Estado' %>
-    <%= f.number_field :status_id %>
-  </div>
-  <br />
+    <table class="table table-bordered">
+	<tr>
+	    <td>
+		<%= f.label :room_id, 'Habitación' %>
+	    </td>
+	    <td>
+		<%= f.number_field :room_id, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :guest_id, 'Cliente' %>
+	    </td>
+	    <td>
+		<%= f.number_field :guest_id, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :check_in, 'Check-in' %>
+	    </td>
+	    <td>
+		<%= f.date_select :check_in, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :check_out, 'Check-out' %>
+	    </td>
+	    <td>
+		<%= f.date_select :check_out, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :status_id, 'Estado' %>
+	    </td>
+	    <td>
+		<%= f.number_field :status_id, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+    </table>
 
-  <div class="actions">
-      <%= f.submit :class => 'btn btn-primary' %>
-  </div>
+    <%= f.submit :class => 'btn btn-primary' %>
+
 <% end %>

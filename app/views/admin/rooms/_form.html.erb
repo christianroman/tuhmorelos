@@ -10,31 +10,57 @@
 	</div>
     <% end %>
 
-    <div clas="field">
-	<%= f.label :hotel_id, 'Hotel' %>
-	<%= collection_select :hotel, :hotel_id, @current_hotel.nil? ? Hotel.all : Array(current_admin_user.hotel), :id, :name %>
-    </div>
-    <div class="field">
-	<%= f.label :name, 'Nombre' %>
-	<%= f.text_field :name %>
-    </div>
-    <div class="field">
-	<%= f.label :fare, 'Tarifa' %>
-	<%= f.text_field :fare %>
-    </div>
-    <div class="field">
-	<%= f.label :existence, 'Existencia' %>
-	<%= f.number_field :existence %>
-    </div>
-    <div class="field">
-	<%= f.label :available, 'Disponibles' %>
-	<%= f.number_field :available %>
-    </div>
-    <div class="field">
-	<%= f.label :max_persons, 'No. personas' %>
-	<%= f.number_field :max_persons %>
-    </div>
-    <div class="actions">
-	<%= f.submit :class => 'btn btn-primary' %>
-    </div>
+    <table class="table table-bordered">
+	<tr>
+	    <td>
+		<%= f.label :hotel_id, 'Hotel' %>
+	    </td>
+	    <td>
+		<%= collection_select :room, :hotel_id, @current_hotel.nil? ? Hotel.all : Array(current_admin_user.hotel), :id, :name, {}, {:class => 'input-select'} %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :name, 'Nombre' %>
+	    </td>
+	    <td>
+		<%= f.text_field :name, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :fare, 'Tarifa' %>
+	    </td>
+	    <td>
+		<%= f.text_field :fare, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :existence, 'Existencia' %>
+	    </td>
+	    <td>
+		<%= f.number_field :existence, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :available, 'Disponibles' %>
+	    </td>
+	    <td>
+		<%= f.number_field :available, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :max_persons, 'No. personas' %>
+	    </td>
+	    <td>
+		<%= f.number_field :max_persons, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+    </table>
+
+    <%= f.submit :class => 'btn btn-primary' %>
+
 <% end %>

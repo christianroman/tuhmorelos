@@ -14,7 +14,7 @@
     <table class="table table-bordered">
 	<tr>
 	    <td>
-		<%= f.label :name, 'Nombre', :class => 'control-label' %>
+		<%= f.label :name, 'Nombre' %>
 	    </td>
 	    <td>
 		<%= f.text_field :name, :class => 'input-xlarge' %>
@@ -22,7 +22,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :street, 'Calle', :class => 'control-label' %>
+		<%= f.label :street, 'Calle' %>
 	    </td>
 	    <td>
 		<%= f.text_field :street, :class => 'input-xlarge' %>
@@ -30,7 +30,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :district, 'Colonia', :class => 'control-label' %>
+		<%= f.label :district, 'Colonia' %>
 	    </td>
 	    <td>
 		<%= f.text_field :district, :class => 'input-xlarge' %>
@@ -38,7 +38,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :zipcode, 'Codigo postal', :class => 'control-label' %>
+		<%= f.label :zipcode, 'Codigo postal' %>
 	    </td>
 	    <td>
 		<%= f.text_field :zipcode, :class => 'input-xlarge' %>
@@ -46,7 +46,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :destination_id, 'Destino', :class => 'control-label' %>
+		<%= f.label :destination_id, 'Destino' %>
 	    </td>
 	    <td>
 		<%= collection_select :hotel, :destination_id, Destination.all, :id, :name, {}, { :class => 'input-select' } %>
@@ -54,7 +54,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :phone, 'Telefonos', :class => 'control-label' %>
+		<%= f.label :phone, 'Telefonos' %>
 	    </td>
 	    <td>
 		<%= f.text_field :phone, :class => 'input-xlarge' %>
@@ -62,7 +62,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :website, 'Sitio web', :class => 'control-label' %>
+		<%= f.label :website, 'Sitio web' %>
 	    </td>
 	    <td>
 		<%= f.text_field :website, :class => 'input-xlarge' %>
@@ -70,7 +70,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :email, 'Email', :class => 'control-label' %>
+		<%= f.label :email, 'Email' %>
 	    </td>
 	    <td>
 		<%= f.text_field :email, :class => 'input-xlarge' %>
@@ -78,7 +78,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :fare_id, 'Rango de tarifa', :class => 'control-label' %>
+		<%= f.label :fare_id, 'Rango de tarifa' %>
 	    </td>
 	    <td>
 		<%= collection_select :hotel, :fare_id, Fare.all, :id, :name, {}, { :class => 'input-select' } %>
@@ -86,7 +86,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :video, 'URL del video', :class => 'control-label' %>
+		<%= f.label :video, 'URL del video' %>
 	    </td>
 	    <td>
 		<%= f.text_field :video, :class => 'input-xlarge' %>
@@ -94,7 +94,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :paypal, 'Correo de cuenta Paypal', :class => 'control-label' %>
+		<%= f.label :paypal, 'Correo de cuenta Paypal' %>
 	    </td>
 	    <td>
 		<%= f.text_field :paypal, :class => 'input-xlarge' %>
@@ -102,7 +102,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :description, 'Descripción', :class => 'control-label' %>
+		<%= f.label :description, 'Descripción' %>
 	    </td>
 	    <td>
 		<%= f.text_area :description, :cols => 20, :rows => 3, :class => 'input-textarea' %>
@@ -110,7 +110,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<h5>Categorias</h5>
+		<b>Categorias</b>
 	    </td>
 	    <td>
 		<table class="table table-bordered table-photos">
@@ -130,7 +130,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<h5>Fotograficas restantes</h5>
+		<b>Fotografias restantes</b>
 	    </td>
 	    <td>
 		<table class="table table-bordered">
@@ -146,7 +146,7 @@
 	</tr>
 	<tr>
 	    <td>
-		<h5>Fotografias actuales</h5>
+		<b>Fotografias actuales</b>
 	    </td>
 	    <td>
 		<table class="table table-bordered table-photos">

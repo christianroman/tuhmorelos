@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Nombre:</b>
-  <%= @destination.name %>
-</p>
+<table class="table table-bordered table-striped">
+    <tr>
+	<td width="121">&nbsp;</td>
+	<td>
+	    <h2><%= @destination.name %></h2>
+	</td>
+    </tr>
+</table>
 
 
 <%= link_to 'Editar', edit_admin_destination_path(@destination), :class => 'btn' %>

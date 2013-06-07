@@ -1,30 +1,26 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-bordered table-striped">
 
-<p>
-  <b>Habitación:</b>
-  <%= @reservation.room_id %>
-</p>
-
-<p>
-  <b>Cliente:</b>
-  <%= @reservation.guest_id %>
-</p>
-
-<p>
-  <b>Check-in:</b>
-  <%= @reservation.check_in %>
-</p>
-
-<p>
-  <b>Check-out:</b>
-  <%= @reservation.check_out %>
-</p>
-
-<p>
-  <b>Estado:</b>
-  <%= @reservation.status_id %>
-</p>
-
+    <tr>
+	<td><b>Habitación</b></td>
+	<td><%= @reservation.room_id %></td>
+    </tr>
+    <tr>
+	<td><b>Cliente</b></td>
+	<td><%= @reservation.guest_id %></td>
+    </tr>
+    <tr>
+	<td><b>Check-in</b></td>
+	<td><%= @reservation.check_in %></td>
+    </tr>
+    <tr>
+	<td><b>Check-out</b></td>
+	<td><%= @reservation.check_out %></td>
+    </tr>
+    <tr>
+	<td><b>Estado:</b></td>
+	<td><%= @reservation.status_id %></td>
+    </tr>
+</table>
 
 <%= link_to 'Editar', edit_admin_reservation_path(@reservation), :class => 'btn' %>
-<%= link_to 'Back', admin_reservations_path, :class => 'btn' %>
+<%= link_to 'Regresar', admin_reservations_path, :class => 'btn' %>
