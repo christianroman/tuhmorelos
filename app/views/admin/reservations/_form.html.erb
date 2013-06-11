@@ -14,46 +14,77 @@
     <table class="table table-bordered">
 	<tr>
 	    <td>
-		<%= f.label :room_id, 'Habitación' %>
+		<%= f.label :hotel_id, 'Hotel' %>
 	    </td>
 	    <td>
-		<%= f.number_field :room_id, :class => 'input-xlarge' %>
+		<%= collection_select :reservation, :hotel_id, Hotel.all, :id, :name, {}, { :class => 'input-select' } %>
 	    </td>
-	</tr>
-	<tr>
-	    <td>
-		<%= f.label :guest_id, 'Cliente' %>
-	    </td>
-	    <td>
-		<%= f.number_field :guest_id, :class => 'input-xlarge' %>
-	    </td>
-	</tr>
-	<tr>
-	    <td>
-		<%= f.label :check_in, 'Check-in' %>
-	    </td>
-	    <td>
-		<%= f.date_select :check_in, :class => 'input-xlarge' %>
-	    </td>
-	</tr>
-	<tr>
-	    <td>
-		<%= f.label :check_out, 'Check-out' %>
-	    </td>
-	    <td>
-		<%= f.date_select :check_out, :class => 'input-xlarge' %>
-	    </td>
-	</tr>
-	<tr>
-	    <td>
-		<%= f.label :status_id, 'Estado' %>
-	    </td>
-	    <td>
-		<%= f.number_field :status_id, :class => 'input-xlarge' %>
-	    </td>
-	</tr>
-    </table>
+	    <tr>
+		<td>
+		    <%= f.label :room_id, 'Habitación' %>
+		</td>
+		<td>
+		    <%= f.grouped_collection_select :room_id, Hotel.all, :rooms, :name, :id, :name %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :guest_id, 'Cliente' %>
+		</td>
+		<td>
+		    <%= collection_select :reservation, :guest_id, Guest.all, :id, :name, {}, { :class => 'input-select' } %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :check_in, 'Check-in' %>
+		</td>
+		<td>
+		    <%= f.date_select :check_in, :class => 'input-xlarge' %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :check_out, 'Check-out' %>
+		</td>
+		<td>
+		    <%= f.date_select :check_out, :class => 'input-xlarge' %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :persons, 'Personas' %>
+		</td>
+		<td>
+		    <%= f.number_field :persons, :class => 'input-xlarge' %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :comment, 'Comentario' %>
+		</td>
+		<td>
+		    <%= f.text_area :comment, :cols => 20, :rows => 3, :class => 'input-textarea' %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :total_amount, 'Total' %>
+		</td>
+		<td>
+		    <%= f.text_field :total_amount, :class => 'input-xlarge' %>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <%= f.label :status, 'Estado' %>
+		</td>
+		<td>
+		    <%= f.number_field :status, :class => 'input-xlarge' %>
+		</td>
+	    </tr>
+	</table>
 
-    <%= f.submit :class => 'btn btn-primary' %>
+	<%= f.submit :class => 'btn btn-primary' %>
 
-<% end %>
+    <% end %>

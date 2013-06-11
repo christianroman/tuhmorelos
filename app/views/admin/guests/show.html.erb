@@ -12,8 +12,12 @@
 	<td><%= @guest.email %></td>
     </tr>
     <tr>
-	<td><b>Telefono</b></td>
+	<td><b>Teléfono</b></td>
 	<td><%= @guest.phone %></td>
+    </tr>
+    <tr>
+	<td><b>Hotel</b></td>
+	<td><%= @guest.hotel.nil? ? 'Ninguno asociado' : @guest.hotel.name %></td>
     </tr>
 </table>
 

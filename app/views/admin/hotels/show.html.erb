@@ -28,7 +28,7 @@
 
     <tr>
 	<td><b>Sitio web</b></td>
-	<td><%= @hotel.website %></td>
+	<td><%= @hotel.website.nil? ? '' : "<a href=\"http://#{@hotel.website.gsub('http://', '')}\" target=\"_blank\">#{@hotel.website}</a>".html_safe %></td>
     </tr>
 
     <tr>
@@ -43,7 +43,7 @@
 
     <tr>
 	<td><b>URL de Video</b></td>
-	<td><%= @hotel.video %></td>
+	<td><%= @hotel.video.nil? ? '' : "<a href=\"http://#{@hotel.video.gsub('http://','')}\" target=\"_blank\">#{@hotel.video}</a>".html_safe %></td>
     </tr>
 
     <tr>

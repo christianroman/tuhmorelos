@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
   attr_accessible :name, :email, :phone
-  belongs_to :hotel
-  belongs_to :reservation
+  has_one :reservation
+  has_one :hotel, :through => :reservation
 end

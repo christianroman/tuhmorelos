@@ -1,44 +1,53 @@
 <%= form_for([:admin, @setting], :html => {:multipart => true}) do |f| %>
-  <% if @setting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+    <% if @setting.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
 
-      <ul>
-      <% @setting.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	    <ul>
+		<% @setting.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		<% end %>
+	    </ul>
+	</div>
+    <% end %>
 
-  <br />
+    <table class="table table-bordered">
 
-  <h4>Fondos actuales:</h4>
-  <table class="table table-bordered table-photos">
-      <%= f.fields_for :assets, @setting.assets do |builder| %>
-	  <% unless builder.object.new_record? %>
-	      <tr>
-		  <td><%= image_tag builder.object.data.url %></td>
-		  <td><%= builder.check_box :_destroy %><strong>¿Eliminar?</strong></td>
-	      </tr>
-	  <% end %>
-      <% end %>
-  </table>
+	<tr>
+	    <td>
+		<b>Fondos actuales</b>
+	    </td>
+	    <td>
+		<table class="table table-bordered table-photos">
+		    <%= f.fields_for :assets, @setting.assets do |builder| %>
+			<% unless builder.object.new_record? %>
+			    <tr>
+				<td><%= image_tag builder.object.data.url %></td>
+				<td><%= builder.check_box :_destroy %><strong>¿Eliminar?</strong></td>
+			    </tr>
+			<% end %>
+		    <% end %>
+		</table>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<b>Espacios disponibles</b>
+	    </td>
+	    <td>
+		<table class="table table-bordered">
+		    <%= f.fields_for :assets, @setting.assets do |builder| %>
+			<% if builder.object.new_record? %>
+			    <tr>
+				<td><%= builder.file_field :data %></td>
+			    </tr>
+			<% end %>
+		    <% end %>
+		</table>
+	    </td>
+	</tr>
+    </table>
 
-  <h4>Espacios disponibles:</h4>
-  <table class="table table-bordered">
-      <%= f.fields_for :assets, @setting.assets do |builder| %>
-	  <% if builder.object.new_record? %>
-	      <tr>
-		  <td><%= builder.label :data, 'Imagen:' %></td>
-		  <td><%= builder.file_field :data %></td>
-	      </tr>
-	  <% end %>
-      <% end %>
-  </table>
-
-  <div class="actions">
-      <%= f.submit :class => 'btn btn-primary' %>
-  </div>
+    <%= f.submit :class => 'btn btn-primary' %>
 
 <% end %>

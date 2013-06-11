@@ -7,7 +7,10 @@
 	<tr>
 	    <th>Nombre</th>
 	    <th>Email</th>
-	    <th>Telefono</th>
+	    <th>Teléfono</th>
+	    <th>Hotel</th>
+	    <th></th>
+	    <th></th>
 	</tr>
     </thead>
     <tbody>
@@ -16,7 +19,8 @@
 		<td><%= link_to guest.name, admin_guest_path(guest) %></td>
 		<td><%= guest.email %></td>
 		<td><%= guest.phone %></td>
-		<td><%= link_to "Editar", edit_admin_guest_path(guest) %></td>
+		<td><%= guest.hotel.nil? ? 'Ninguno asociado' : guest.hotel.name %></td>
+		<td><%= link_to "Editar", edit_admin_guest_path(guest), :class => 'btn btn-small' %></td>
 		<td><%= link_to "Eliminar", [:admin, guest], :confirm => '¿Estas seguro?', :method => :delete, :class => 'btn btn-small btn-danger' %></td>
 	    </tr>
 	<% end %>

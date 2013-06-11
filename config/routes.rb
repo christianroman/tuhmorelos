@@ -13,7 +13,7 @@ Tuhmorelos::Application.routes.draw do
 	#resources :hotels, :path => 'hoteles'
 	resources :hotels, :path => 'hoteles'
 	resources :fares, :path => 'rangotarifas'
-	resources :destinations, :path => 'destinos'
+	resources :destinations, :except => [:show], :path => 'destinos'
 	resources :categories, :path => 'categorias'
 	resources :rooms, :path => 'habitaciones'
 	resources :guests, :path => 'clientes'

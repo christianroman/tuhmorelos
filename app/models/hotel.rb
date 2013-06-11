@@ -7,6 +7,7 @@ class Hotel < ActiveRecord::Base
   has_many :categories, :through => :categorizations
   has_many :rooms
   has_many :reservations
+  has_many :guests, :through => :reservations
 
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :reject_if => lambda {|t| t['data'].nil?}, :allow_destroy => true
