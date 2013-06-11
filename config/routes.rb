@@ -41,6 +41,8 @@ Tuhmorelos::Application.routes.draw do
 
     resources :hotels
 
+    post 'hotels/:id/createreservation' => 'hotels#create'
+
     #resources :home do
 #	collection do
 #	    get 'search'

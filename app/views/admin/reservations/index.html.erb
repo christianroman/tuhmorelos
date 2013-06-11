@@ -5,6 +5,8 @@
 <table class="table table-bordered table-striped">
     <thead>
 	<tr>
+	    <th>No. Reservación</th>
+	    <th>Hotel</th>
 	    <th>Habitación</th>
 	    <th>Cliente</th>
 	    <th>Check in</th>
@@ -18,7 +20,9 @@
 	<% @reservations.each do |reservation| %>
 	    <tr>
 		<td><%= link_to reservation.id, admin_reservation_path(reservation) %></td>
-		<td><%= reservation.guest_id %></td>
+		<td><%= link_to reservation.hotel.name, admin_hotel_path(reservation.hotel) %></td>
+		<td><%= link_to reservation.room_id, admin_room_path(reservation.room_id) %></td>
+		<td><%= link_to reservation.guest.name, admin_guest_path(reservation.guest) %></td>
 		<td><%= reservation.check_in %></td>
 		<td><%= reservation.check_out %></td>
 		<td><%= reservation.status_id %></td>

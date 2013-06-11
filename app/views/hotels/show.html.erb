@@ -6,13 +6,17 @@
 
 <div class="clearfix">
 
+    <div class="hotel_description">
+	<strong><%= @hotel.name %></strong> <%= @hotel.description %>
+    </div>
+
     <div class="left_side">
 
 	<h3 class="green">Reserva en línea</h3>
 
 	<div class="form-canvas">
 
-	    <%= form_tag('/', :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+	    <%= form_tag("/hotels/#{@hotel.id}/createreservation", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
 		<div class="control-group">
 		    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
 		    <div class="controls">
@@ -50,7 +54,7 @@
 		<div class="control-group">
 		    <%= label_tag 'room', 'Habitación', :class => 'control-label' %>
 		    <div class="controls">
-			<%= collection_select(:room, :hotel_id, @hotel.rooms, :id, :name_and_fare, {:prompt => 'Seleccionar Habitación'}, {:class => 'select_form'}) %>
+			<%= collection_select(:room, :room_id, @hotel.rooms, :id, :name_and_fare, {:prompt => 'Seleccionar Habitación'}, {:class => 'select_form'}) %>
 		    </div>
 		</div>
 		<div class="control-group">
