@@ -4,6 +4,17 @@ class Reservation < ActiveRecord::Base
     belongs_to :guest
     belongs_to :room
 
+    #validations
+
+    validates :room, :presence => true
+    validates :hotel, :presence => true
+    validates :guest, :presence => true
+
+    validates :check_in, :presence => true#, :date => { :after => Time.now, :before => Time.now + 1.year }
+    validates :check_out, :presence => true#, :date => { :after => Time.now, :before => Time.now + 1.year }
+
+    validates :persons, :presence => true, :numericality => {:greater_than => 0, :message => " numero no valido."}
+
     def status_human
 	case status
 	when 0

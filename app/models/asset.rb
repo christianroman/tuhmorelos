@@ -1,5 +1,5 @@
 class Asset < ActiveRecord::Base
-    has_attached_file :data
+    has_attached_file :data, :styles => { :blur => { :processors => [:blur] } }
     belongs_to :setting
     attr_accessible :setting_id, :data
 
