@@ -1,3 +1,3 @@
 object false
-child (@destinations) { extends 'api/destinations/show' }
+child (@destinations) { attributes :id, :name }
 node(:status) { @status }

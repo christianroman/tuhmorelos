@@ -29,6 +29,8 @@ Tuhmorelos::Application.routes.draw do
     namespace :api, defaults: { format: 'json' } do
 	resources :hotels, :only => [:index, :show], :path => 'hoteles'
 	resources :destinations, :only => [:index], :path => 'destinos'
+	resources :categories, :only => [:index], :path => 'categorias'
+	resources :fares, :only => [:index], :path => 'tarifas'
     end
 
     ###########################################################
