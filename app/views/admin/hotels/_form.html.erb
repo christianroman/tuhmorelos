@@ -1,15 +1,6 @@
 <%= form_for([:admin, @hotel], :html => {:multipart => true }) do |f| %>
-    <% if @hotel.errors.any? %>
-	<div id="error_explanation">
-	    <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
 
-	    <ul>
-		<% @hotel.errors.full_messages.each do |msg| %>
-		    <li><%= msg %></li>
-		<% end %>
-	    </ul>
-	</div>
-    <% end %>
+    <%= render 'admin/errors', object: @hotel %>
 
     <table class="table table-bordered">
 	<tr>

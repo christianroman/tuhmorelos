@@ -73,7 +73,7 @@ module Admin
 	    @category.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_categories_url }
+		format.html { redirect_to admin_categories_url, notice: 'Categoria eliminada exitosamente.' }
 	    end
 	end
     end

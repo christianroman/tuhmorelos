@@ -74,7 +74,7 @@ module Admin
 	    @fare.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_fares_url }
+		format.html { redirect_to admin_fares_url, notice: 'Rango de tarifa eliminado exitosamente.' }
 	    end
 	end
     end

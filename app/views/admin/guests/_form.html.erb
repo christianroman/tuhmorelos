@@ -1,5 +1,7 @@
 <%= form_for [:admin, @guest] do |f| %>
 
+    <%= render 'admin/errors', object: @guest %>
+
     <table class="table table-bordered">
 	<tr>
 	    <td>

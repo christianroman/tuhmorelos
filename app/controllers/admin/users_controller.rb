@@ -48,7 +48,7 @@ module Admin
 	    @user.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_users_url }
+		format.html { redirect_to admin_users_url, notice: 'Usuario eliminado exitosamente.' }
 	    end
 	end
 

@@ -31,6 +31,7 @@ class HotelsController < ApplicationController
 
 		    if @reservation.valid?
 			if @reservation.save
+			    #redirect_to_paypal
 			    redirect_to Hotel.find(params[:id])
 			    return
 			end
@@ -38,23 +39,22 @@ class HotelsController < ApplicationController
 
 			@guest.destroy
 
-			@error_on_reservation = true
-			redirect_to Hotel.find(params[:id])
+			@errors = @reservation.errors
+			redirect_to Hotel.find(params[:id]), :notice => @errors
 
 		    end
 
 		else
 
+		    @errors = true
 		    @guest.destroy
-
-		    @error_on_reservation = true
-		    redirect_to Hotel.find(params[:id])
+		    redirect_to Hotel.find(params[:id]), :notice => @errors
 
 		end
 	    end
 	else
-	    @error_on_reservation = true
-	    redirect_to Hotel.find(params[:id])
+	    @errors = @guest.errors
+	    redirect_to Hotel.find(params[:id]), :notice => @errors
 	end
 
     end

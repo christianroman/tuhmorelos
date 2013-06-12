@@ -17,7 +17,7 @@ module Admin
 	def create
 	    @guest = Guest.new(params[:guest])
 	    if @guest.save
-		redirect_to [:admin, @guest], :notice => "Successfully created guest."
+		redirect_to [:admin, @guest], :notice => "Cliente creado exitosamente."
 	    else
 		render :action => 'new'
 	    end
@@ -30,7 +30,7 @@ module Admin
 	def update
 	    @guest = Guest.find(params[:id])
 	    if @guest.update_attributes(params[:guest])
-		redirect_to [:admin, @guest], :notice  => "Successfully updated guest."
+		redirect_to [:admin, @guest], :notice  => "Cliente actualizado exitosamente."
 	    else
 		render :action => 'edit'
 	    end
@@ -39,7 +39,7 @@ module Admin
 	def destroy
 	    @guest = Guest.find(params[:id])
 	    @guest.destroy
-	    redirect_to admin_guests_url, :notice => "Successfully destroyed guest."
+	    redirect_to admin_guests_url, :notice => "Cliente eliminado exitosamente."
 	end
     end
 end

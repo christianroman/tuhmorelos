@@ -4,7 +4,7 @@ module Admin
 	# GET /hotels
 	# GET /hotels.json
 	def index
-	    
+
 	    unless @current_hotel.nil?
 		redirect_to admin_hotel_path(@current_hotel)
 	    else
@@ -79,7 +79,7 @@ module Admin
 	    @hotel.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_hotels_url }
+		format.html { redirect_to admin_hotels_url, notice: 'Hotel eliminado exitosamente.' }
 	    end
 	end
     end

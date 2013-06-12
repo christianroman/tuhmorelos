@@ -74,7 +74,7 @@ module Admin
 	    @destination.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_destinations_url }
+		format.html { redirect_to admin_destinations_url, notice: 'Destino eliminado exitosamente.' }
 	    end
 	end
     end

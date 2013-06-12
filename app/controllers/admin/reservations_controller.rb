@@ -75,7 +75,7 @@ module Admin
 	    @reservation.destroy
 
 	    respond_to do |format|
-		format.html { redirect_to admin_reservations_url }
+		format.html { redirect_to admin_reservations_url, notice: 'Reservacion eliminada exitosamente.' }
 	    end
 	end
     end

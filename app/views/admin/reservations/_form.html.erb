@@ -1,15 +1,6 @@
 <%= form_for([:admin, @reservation]) do |f| %>
-    <% if @reservation.errors.any? %>
-	<div id="error_explanation">
-	    <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
 
-	    <ul>
-		<% @reservation.errors.full_messages.each do |msg| %>
-		    <li><%= msg %></li>
-		<% end %>
-	    </ul>
-	</div>
-    <% end %>
+    <%= render 'admin/errors', object: @reservation %>
 
     <table class="table table-bordered">
 	<tr>

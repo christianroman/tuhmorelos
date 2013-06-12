@@ -41,7 +41,7 @@ Tuhmorelos::Application.routes.draw do
 
     resources :hotels
 
-    post 'hotels/:id/createreservation' => 'hotels#create'
+    post 'hotels/:id/reservar' => 'hotels#create'
 
     #resources :home do
 #	collection do

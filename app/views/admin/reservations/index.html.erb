@@ -23,7 +23,7 @@
 		<td><%= link_to reservation.id, admin_reservation_path(reservation) %></td>
 		<td><%= link_to reservation.hotel.name, admin_hotel_path(reservation.hotel) %></td>
 		<td><%= link_to reservation.room.name, admin_room_path(reservation.room_id) %></td>
-		<td><%= link_to reservation.guest.name, admin_guest_path(reservation.guest) %></td>
+		<td><%= reservation.guest.nil? ? 'Ninguno' : link_to(reservation.guest.name, admin_guest_path(reservation.guest)) %></td>
 		<td><%= reservation.check_in %></td>
 		<td><%= reservation.check_out %></td>
 		<td>$<%= reservation.total_amount.nil? ? '0' : reservation.total_amount %></td>

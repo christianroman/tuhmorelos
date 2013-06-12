@@ -22,7 +22,7 @@ module Admin
 	def create
 	    @room = Room.new(params[:room])
 	    if @room.save
-		redirect_to [:admin, @room], :notice => "Successfully created room."
+		redirect_to [:admin, @room], :notice => "Habitacion creada exitosamente."
 	    else
 		render :action => 'new'
 	    end
@@ -35,7 +35,7 @@ module Admin
 	def update
 	    @room = Room.find(params[:id])
 	    if @room.update_attributes(params[:room])
-		redirect_to [:admin, @room], :notice  => "Successfully updated room."
+		redirect_to [:admin, @room], :notice  => "Habitacion actualizada exitosamente."
 	    else
 		render :action => 'edit'
 	    end
@@ -44,7 +44,7 @@ module Admin
 	def destroy
 	    @room = Room.find(params[:id])
 	    @room.destroy
-	    redirect_to admin_rooms_url, :notice => "Successfully destroyed room."
+	    redirect_to admin_rooms_url, :notice => "Habitacion eliminada exitosamente."
 	end
     end
 end
