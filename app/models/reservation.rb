@@ -4,6 +4,8 @@ class Reservation < ActiveRecord::Base
     belongs_to :guest
     belongs_to :room
 
+    has_one :payment_notification
+
     #validations
 
     validates :room, :presence => true

@@ -53,6 +53,18 @@
 	<td><b>Estado</b></td>
 	<td><span class="label label-info"><%= @reservation.status_human %></span></td>
     </tr>
+    <tr>
+	<td><b>Paypal Transaction ID</b></td>
+	<td><%= @reservation.payment_notification.nil? ? 'No disponible' : @reservation.payment_notification.transaction_id %></td>
+    </tr>
+    <tr>
+	<td><b>Paypal Status</b></td>
+	<td><%= @reservation.payment_notification.nil? ? 'No disponible' : @reservation.payment_notification.status %></td>
+    </tr>
+    <tr>
+	<td><b>Paypal fecha pago</b></td>
+	<td><%= @reservation.payment_notification.nil? ? 'No disponible' : @reservation.payment_notification.created_at.strftime('%d/%m/%Y %I:%M%p') %></td>
+    </tr>
 </table>
 
 <%= link_to 'Editar', edit_admin_reservation_path(@reservation), :class => 'btn' %>

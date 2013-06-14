@@ -1,5 +1,6 @@
 Tuhmorelos::Application.routes.draw do
 
+
     ###########################################################
     # Admin
     namespace :admin do
@@ -50,6 +51,8 @@ Tuhmorelos::Application.routes.draw do
     resources :hotels
 
     post 'hotels/:id/reservar' => 'hotels#create'
+    
+    resources :payment_notifications
 
     #resources :home do
 #	collection do

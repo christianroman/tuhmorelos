@@ -13,8 +13,6 @@ class HotelsController < ApplicationController
     end
 
     def create
-	p '*' * 200
-	p params
 
 	@guest = Guest.new(name: params[:nombre], email: params[:email], phone: params[:telefono])
 	if @guest.valid?	  
@@ -32,7 +30,26 @@ class HotelsController < ApplicationController
 		    if @reservation.valid?
 			if @reservation.save
 			    #redirect_to_paypal
-			    redirect_to Hotel.find(params[:id])
+			    #redirect_to Hotel.find(params[:id])
+
+			    return_url = root_url
+
+			    values = {
+				:business => @reservation.hotel.paypal,
+				:cmd => '_cart',
+				:upload => 1,
+				:currency_code => 'MXN',
+				:return => return_url,
+				:invoice => @reservation.id,
+				:notify_url => payment_notifications_url,
+				:amount_1 => @reservation.total_amount,
+				:item_name_1 => "#{days} noches en #{@reservation.hotel.name}".encode,
+				:item_number_1 => @reservation.hotel.id,
+				:quantity_1 => 1
+			    }
+
+			    redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+
 			    return
 			end
 		    else
