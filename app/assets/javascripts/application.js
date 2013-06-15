@@ -11,11 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require bootstrap-datepicker
-//= require zoom-showcase
-//= require jquery.easing
-//= require jquery.clip-animation
-//= require jquery.fancybox
+//= require jquery_ujs
+//= require_tree .
 
 $(function(){
 
