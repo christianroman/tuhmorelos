@@ -22,12 +22,13 @@ group :assets do
   gem 'bootstrap-datepicker-rails'
   #gem 'bootstrap-datetimepicker-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
+  gem 'execjs'
 
   gem 'uglifier', '>= 1.0.3'
-end
+  gem 'jquery-rails'
 
-gem 'jquery-rails'
+end
 
 gem 'rabl'
 
@@ -45,7 +46,7 @@ gem 'paperclip'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
