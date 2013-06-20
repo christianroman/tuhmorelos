@@ -9,6 +9,7 @@ class HotelsController < ApplicationController
 	@hotel = Hotel.find(params[:id])
 	respond_to do |format|
 	    format.html
+	    format.js
 	end
     end
 
@@ -25,7 +26,7 @@ class HotelsController < ApplicationController
 		unless params[:room][:room_id].empty?
 
 		    total_amount = days * Room.find(params[:room][:room_id]).fare
-		    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], persons: params[:persons], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
+		    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
 
 		    if @reservation.valid?
 			if @reservation.save
@@ -36,16 +37,16 @@ class HotelsController < ApplicationController
 
 			    values = {
 				:business => @reservation.hotel.paypal,
-				:cmd => '_cart',
+				:cmd => '_xclick',
 				:upload => 1,
 				:currency_code => 'MXN',
 				:return => return_url,
 				:invoice => @reservation.id,
 				:notify_url => payment_notifications_url,
-				:amount_1 => @reservation.total_amount,
-				:item_name_1 => "#{days} noches en #{@reservation.hotel.name}".encode,
-				:item_number_1 => @reservation.hotel.id,
-				:quantity_1 => 1
+				:amount => @reservation.total_amount,
+				:item_name => "#{days} noches en #{@reservation.hotel.name}".encode,
+				:item_number => @reservation.hotel.id,
+				:quantity => 1
 			    }
 
 			    redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query

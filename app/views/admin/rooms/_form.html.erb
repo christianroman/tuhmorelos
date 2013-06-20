@@ -45,10 +45,18 @@
 	</tr>
 	<tr>
 	    <td>
-		<%= f.label :max_persons, 'No. personas' %>
+		<%= f.label :max_adults, 'Adultos' %>
 	    </td>
 	    <td>
-		<%= f.number_field :max_persons, :class => 'input-xlarge' %>
+		<%= f.number_field :max_adults, :class => 'input-xlarge' %>
+	    </td>
+	</tr>
+	<tr>
+	    <td>
+		<%= f.label :max_children, 'Niños' %>
+	    </td>
+	    <td>
+		<%= f.number_field :max_children, :class => 'input-xlarge' %>
 	    </td>
 	</tr>
     </table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614225723) do
+ActiveRecord::Schema.define(:version => 20130619183416) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",        :null => false
@@ -103,10 +103,11 @@ ActiveRecord::Schema.define(:version => 20130614225723) do
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
     t.text     "comment"
-    t.integer  "persons"
+    t.integer  "adults"
     t.integer  "hotel_id"
     t.decimal  "total_amount", :precision => 10, :scale => 0
     t.datetime "purchased_at"
+    t.integer  "children"
   end
 
   create_table "roles", :force => true do |t|
@@ -123,12 +124,13 @@ ActiveRecord::Schema.define(:version => 20130614225723) do
   create_table "rooms", :force => true do |t|
     t.integer  "hotel_id"
     t.string   "name"
-    t.decimal  "fare",        :precision => 10, :scale => 0
+    t.decimal  "fare",         :precision => 10, :scale => 0
     t.integer  "existence"
     t.integer  "available"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.integer  "max_persons"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.integer  "max_adults"
+    t.integer  "max_children"
   end
 
   create_table "settings", :force => true do |t|

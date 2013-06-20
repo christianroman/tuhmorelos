@@ -177,10 +177,10 @@ body{
 
 .box1 {
     color:#610031;
-    padding-top:20px;
+    padding-top:45px;
     text-align:left;
     width:296px;
-    height:196px;
+    height:171px;
     float:left;
     background:transparent url('box11.png') no-repeat top center;
 }
@@ -191,10 +191,10 @@ body{
 
 .box2 {
     color:#0f2556;
-    padding-top:20px;
+    padding-top:40px;
     text-align:left;
     width:296px;
-    height:196px;
+    height:176px;
     float:left;
     background:transparent url('box22.png') no-repeat top center;
     margin-left:10px;
@@ -212,8 +212,12 @@ body{
     margin-left:10px;
 }
 
-.box1 table, .box2 table {
+.box1 table {
     margin-left:20px;
+}
+
+.box2 table {
+    margin-left:35px;
 }
 
 .box3 table{
@@ -305,6 +309,7 @@ body{
 	padding-top:10px;
 	margin-left:30px;
 	color:$purpleTextColor;
+	text-shadow: 0px 0px 2px white;
     }
 
     .item .info .title {
@@ -330,6 +335,7 @@ body{
 
     .left_side label {
 	font-weight:bold;
+	text-shadow:0px 0px 2px white;
     }
 
 .right_side {
@@ -372,4 +378,9 @@ body{
 
 .hotel_description {
     margin:10px 0;
+    text-shadow:0px 0px 2px white;
+}
+
+.blur {
+    text-shadow:0px 0px 3px white;
 }
