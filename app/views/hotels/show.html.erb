@@ -66,21 +66,30 @@
 	    <div class="control-group">
 		<%= label_tag 'adults', 'Adultos', :class => 'control-label' %>
 		<div class="controls">
-		    <% if !@hotel.rooms.empty? %>
-			<%= select_tag 'adults', (1..@hotel.rooms.max_by(&:max_adults).max_adults).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_form' %>
-		    <% else %>
-			<%= select_tag 'adults', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_form' %>
-		    <% end %>
-		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'children', 'Niños', :class => 'control-label' %>
-		<div class="controls">
-		    <% if !@hotel.rooms.empty? %>
-			<%= select_tag 'children', (1..@hotel.rooms.max_by(&:max_children).max_children).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_form' %>
-		    <% else %>
-			<%= select_tag 'children', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_form' %>
-		    <% end %>
+		    <table class="table_persons">
+			<tr>
+			    <td>
+				<% if !@hotel.rooms.empty? %>
+				    <%= select_tag 'adults', (1..@hotel.rooms.max_by(&:max_adults).max_adults).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				<% else %>
+				    <%= select_tag 'adults', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				<% end %>
+			    </td>
+			    <td>
+				<span class="label_form">Niños</span>
+				<!--
+				<%= label_tag 'children', 'Niños', :class => 'control-label' %>
+				-->
+			    </td>
+			    <td>
+				<% if !@hotel.rooms.empty? %>
+				    <%= select_tag 'children', (1..@hotel.rooms.max_by(&:max_children).max_children).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				<% else %>
+				    <%= select_tag 'children', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				<% end %>
+			    </td>
+			</tr>
+		    </table>
 		</div>
 	    </div>
 	    <div class="control-group">
