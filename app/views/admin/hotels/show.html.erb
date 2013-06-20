@@ -56,6 +56,10 @@
 	<td><%= @hotel.description %></td>
     </tr>
     <tr>
+	<td><b>Widget HTML</b></td>
+	<td><pre><%= "<script src=\"#{root_url}hotels/#{@hotel.id}.js\" type=\"text/javascript\"></script>" %></pre></td>
+    </tr>
+    <tr>
 	<td><b>Categorias</b></td>
 	<td>
 	    <ul>
