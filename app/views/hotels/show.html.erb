@@ -124,11 +124,31 @@
 	<div id="zoom-gallery">
 	    <img src="<%= asset_path 'preloader.gif' %>" class="preloader" width="55" height="18" alt="preloader" />
 	    <ul>
-		<li title="<%= @hotel.photos[0].nil? ? asset_path('sin_foto.png') : @hotel.photos[0].data.url(:medium) %>"></li>
-		<li title="<%= @hotel.photos[1].nil? ? asset_path('sin_foto.png') : @hotel.photos[1].data.url(:medium) %>"></li>
-		<li title="<%= @hotel.photos[2].nil? ? asset_path('sin_foto.png') : @hotel.photos[2].data.url(:medium) %>"></li>
-		<li title="<%= @hotel.photos[3].nil? ? asset_path('sin_foto.png') : @hotel.photos[3].data.url(:medium) %>"></li>
-		<li title="<%= @hotel.photos[4].nil? ? asset_path('sin_foto.png') : @hotel.photos[4].data.url(:medium) %>"></li>
+		<li title="<%= @hotel.photos[0].nil? ? asset_path('sin_foto.png') : @hotel.photos[0].data.url(:medium) %>">
+		    <% unless @hotel.photos[0].nil? %>
+			<ul class="align-left" title="<%= @hotel.photos[0].data.url %>"></ul>
+		    <% end %>
+		</li>
+		<li title="<%= @hotel.photos[1].nil? ? asset_path('sin_foto.png') : @hotel.photos[1].data.url(:medium) %>">
+		    <% unless @hotel.photos[1].nil? %>
+			<ul class="align-left" title="<%= @hotel.photos[1].data.url %>"></ul>
+		    <% end %>
+		</li>
+		<li title="<%= @hotel.photos[2].nil? ? asset_path('sin_foto.png') : @hotel.photos[2].data.url(:medium) %>">
+		    <% unless @hotel.photos[2].nil? %>
+			<ul class="align-left" title="<%= @hotel.photos[2].data.url %>"></ul>
+		    <% end %>
+		</li>
+		<li title="<%= @hotel.photos[3].nil? ? asset_path('sin_foto.png') : @hotel.photos[3].data.url(:medium) %>">		
+		    <% unless @hotel.photos[3].nil? %>
+			<ul class="align-left" title="<%= @hotel.photos[3].data.url %>"></ul>
+		    <% end %>
+		</li>
+		<li title="<%= @hotel.photos[4].nil? ? asset_path('sin_foto.png') : @hotel.photos[4].data.url(:medium) %>">
+		    <% unless @hotel.photos[4].nil? %>
+			<ul class="align-left" title="<%= @hotel.photos[4].data.url %>"></ul>
+		    <% end %>
+		</li>
 	    </ul>
 	    <noscript>
 		<div id="noscript">
