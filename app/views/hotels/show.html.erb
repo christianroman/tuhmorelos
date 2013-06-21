@@ -22,7 +22,7 @@
 
     <div class="form-canvas">
 
-	<%= form_tag("/hotels/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+	<%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
 	    <div class="control-group">
 		<%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
 		<div class="controls">

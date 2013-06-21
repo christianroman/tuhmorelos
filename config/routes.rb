@@ -48,9 +48,9 @@ Tuhmorelos::Application.routes.draw do
 
     resources :search, :only => :index
 
-    resources :hotels
+    resources :hotels, :path => 'hoteles'
 
-    post 'hotels/:id/reservar' => 'hotels#create'
+    post 'hoteles/:id/reservar' => 'hotels#create'
 
     resources :payment_notifications
 

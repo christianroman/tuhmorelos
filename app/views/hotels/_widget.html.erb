@@ -43,7 +43,7 @@ $(function() {
 
 <div id="hotel-embed-widget">
 
-    <%= form_tag("#{root_url}hotels/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+    <%= form_tag("#{root_url}hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
 	<div class="control-group">
 	    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
 	    <div class="controls">
