@@ -1,8 +1,7 @@
 <% javascript 'hotels_show' %>
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' %>
-<!--
-<h1><%= @hotel.name %></h1>
--->
+
+<h1 class="blur"><%= @hotel.name %></h1>
 
 <div class="clearfix">
 
@@ -12,158 +11,168 @@
 	</div>
     <% end %>
 
-    <div class="hotel_description">
-	<strong><%= @hotel.name %></strong> <%= @hotel.description %>
-</div>
+    <div class="left_side">
 
-<div class="left_side">
+	<h3 class="green blur">Reserva en línea</h3>
 
-    <h3 class="green blur">Reserva en línea</h3>
+	<div class="form-canvas">
 
-    <div class="form-canvas">
-
-	<%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
-	    <div class="control-group">
-		<%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
-		<div class="controls">
-		    <%= text_field_tag 'nombre', nil, :placeholder => 'Nombre completo', :class => 'input-xlarge' %>
-		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'email', 'E-mail', :class => 'control-label' %>
-		<div class="controls">
-		    <%= text_field_tag 'email', nil, :placeholder => 'ejemplo@dominio.com', :class => 'input-xlarge' %>
-		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'telefono', "Teléfono", :class => 'control-label' %>
-		<div class="controls">
-		    <%= text_field_tag 'telefono', nil, :placeholder => '(55) 5626874', :class => 'input-xlarge' %>
-		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'check_in', 'Fecha de llegada', :class => 'control-label' %>
-		<div class="controls">
-		    <div class="input-append date datepicker-checkin" data-date="<%= Time.now.strftime('%d/%m/%Y') %>" data-date-format="dd-mm-yyyy">
-			<%= text_field_tag 'check_in', Time.now.strftime('%d/%m/%Y'), :placeholder => 'Seleccionar fecha de llegada', :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span></input>
+	    <%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+		<div class="control-group">
+		    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
+		    <div class="controls">
+			<%= text_field_tag 'nombre', nil, :placeholder => 'Nombre completo', :class => 'input-xlarge' %>
 		    </div>
 		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'check_out', 'Fecha de salida', :class => 'control-label' %>
-		<div class="controls">
-		    <div class="input-append date datepicker-checkout" data-date="<%= (Time.now + 1.days).strftime('%d/%m/%Y') %>" data-date-format="dd-mm-yyyy">
-			<%= text_field_tag 'check_out', (Time.now + 1.days).strftime('%d/%m/%Y'), :placeholder => 'Seleccionar fecha de salida', :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span></input>
+		<div class="control-group">
+		    <%= label_tag 'email', 'E-mail', :class => 'control-label' %>
+		    <div class="controls">
+			<%= text_field_tag 'email', nil, :placeholder => 'ejemplo@dominio.com', :class => 'input-xlarge' %>
 		    </div>
 		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'room', 'Habitación', :class => 'control-label' %>
-		<div class="controls">
-		    <%= collection_select(:room, :room_id, @hotel.rooms, :id, :name_and_fare, {:prompt => 'Seleccionar Habitación'}, {:class => 'select_form'}) %>
+		<div class="control-group">
+		    <%= label_tag 'telefono', "Teléfono", :class => 'control-label' %>
+		    <div class="controls">
+			<%= text_field_tag 'telefono', nil, :placeholder => '(55) 5626874', :class => 'input-xlarge' %>
+		    </div>
 		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'adults', 'Adultos', :class => 'control-label' %>
-		<div class="controls">
-		    <table class="table_persons">
-			<tr>
-			    <td>
-				<% if !@hotel.rooms.empty? %>
-				    <%= select_tag 'adults', (1..@hotel.rooms.max_by(&:max_adults).max_adults).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
-				<% else %>
-				    <%= select_tag 'adults', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
-				<% end %>
-			    </td>
-			    <td>
-				<span class="label_form">Niños</span>
-				<!--
-				<%= label_tag 'children', 'Niños', :class => 'control-label' %>
-				-->
-			    </td>
-			    <td>
-				<% if !@hotel.rooms.empty? %>
-				    <%= select_tag 'children', (1..@hotel.rooms.max_by(&:max_children).max_children).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
-				<% else %>
-				    <%= select_tag 'children', (1..8).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
-				<% end %>
-			    </td>
-			</tr>
-		    </table>
+		<div class="control-group">
+		    <%= label_tag 'check_in', 'Fecha de llegada', :class => 'control-label' %>
+		    <div class="controls">
+			<div class="input-append date datepicker-checkin" data-date="<%= Time.now.strftime('%d/%m/%Y') %>" data-date-format="dd-mm-yyyy">
+			    <%= text_field_tag 'check_in', Time.now.strftime('%d/%m/%Y'), :placeholder => 'Seleccionar fecha de llegada', :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span></input>
+			</div>
+		    </div>
 		</div>
-	    </div>
-	    <div class="control-group">
-		<%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
-		<div class="controls">
-		    <%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
+		<div class="control-group">
+		    <%= label_tag 'check_out', 'Fecha de salida', :class => 'control-label' %>
+		    <div class="controls">
+			<div class="input-append date datepicker-checkout" data-date="<%= (Time.now + 1.days).strftime('%d/%m/%Y') %>" data-date-format="dd-mm-yyyy">
+			    <%= text_field_tag 'check_out', (Time.now + 1.days).strftime('%d/%m/%Y'), :placeholder => 'Seleccionar fecha de salida', :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span></input>
+			</div>
+		    </div>
 		</div>
+		<div class="control-group">
+		    <%= label_tag 'room', 'Habitación', :class => 'control-label' %>
+		    <div class="controls">
+			<%= collection_select(:room, :room_id, @hotel.rooms, :id, :name_and_fare, {:prompt => 'Seleccionar Habitación'}, {:class => 'select_form'}) %>
+		    </div>
+		</div>
+		<div class="control-group">
+		    <%= label_tag 'adults', 'Adultos', :class => 'control-label' %>
+		    <div class="controls">
+			<table class="table_persons">
+			    <tr>
+				<td>
+				    <%= select_tag 'adults', (1..10).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				</td>
+				<td>
+				    <span class="label_form">Niños</span>
+				    <!--
+				    <%= label_tag 'children', 'Niños', :class => 'control-label' %>
+				    -->
+				</td>
+				<td>
+				    <%= select_tag 'children', (0..10).map{|i| "<option>#{i}</option>"}.join.html_safe, :class => 'select_small' %>
+				</td>
+			    </tr>
+			</table>
+		    </div>
+		</div>
+		<div class="control-group">
+		    <%= label_tag 'comentario', 'Comentario', :class => 'control-label' %>
+		    <div class="controls">
+			<%= text_area_tag 'comentario', nil, :rows => 3, :class => 'input-xlarge' %>
+		    </div>
+		</div>
+		<div class="control-group">
+		    <div class="controls">
+			<%= button_tag(type: 'submit', class: 'btn btn-custom pull-right') do %>
+			    Reserva ya
+			<% end %>
+		    </div>
+		</div>
+
+	    <% end %>
+
+	</div>
+
+	<div id="map-canvas">
+	    <iframe width="480" height="270" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps?ie=UTF8&amp;q=Hotel+<%= @hotel.name.gsub(' ', '+') %>&amp;fb=1&amp;gl=mx&amp;hq=Hotel+<%= @hotel.name.gsub(' ', '+') %>&amp;hnear=<%= @hotel.destination.name %>,+MOR&amp;&amp;t=m&amp;iwloc=a&amp;&amp;spn=0.006295,0.006295&amp;output=embed"></iframe>
+	</div>
+
+    </div>
+
+    <div class="right_side">
+
+	<h3 class="green blur">Descripción</h3>
+
+	<div class="right_wrapper">
+
+	    <div class="hotel_description">
+		<%= @hotel.description %>
 	    </div>
-	    <div class="control-group">
-		<div class="controls">
-		    <%= button_tag(type: 'submit', class: 'btn btn-custom pull-right') do %>
-			Reserva ya
+
+	    <% unless @hotel.photos.empty? %>
+
+		<div class="photo-gallery clearfix">
+		    <% @hotel.photos.each_with_index do |photo,i| %>
+			<a class="fancybox" rel="gallery1" href="<%= photo.data.url(:original) %>" title="<%= "#{@hotel.name} #{i+1}" %>">
+			    <img src="<%= photo.data.url(:thumb) %>" alt="" />
+			</a>
 		    <% end %>
 		</div>
-	    </div>
 
-	<% end %>
+	    <% end %>
 
-    </div>
+	</div>
 
-    <div id="map-canvas">
-	<iframe width="480" height="270" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps?ie=UTF8&amp;q=Hotel+<%= @hotel.name.gsub(' ', '+') %>&amp;fb=1&amp;gl=mx&amp;hq=Hotel+<%= @hotel.name.gsub(' ', '+') %>&amp;hnear=<%= @hotel.destination.name %>,+MOR&amp;&amp;t=m&amp;iwloc=a&amp;&amp;spn=0.006295,0.006295&amp;output=embed"></iframe>
-    </div>
-
-</div>
-
-<div class="right_side">
-
-    <h2 class="green blur"><%= @hotel.name %></h2>
-
-    <% unless @hotel.photos.empty? %>
-	<div id="zoom-gallery">
-	    <img src="<%= asset_path 'preloader.gif' %>" class="preloader" width="55" height="18" alt="preloader" />
-	    <ul>
-		<li title="<%= @hotel.photos[0].nil? ? asset_path('sin_foto.png') : @hotel.photos[0].data.url(:medium) %>">
+	<!--
+	<% unless @hotel.photos.empty? %>
+	    <div id="zoom-gallery">
+		<img src="<%= asset_path 'preloader.gif' %>" class="preloader" width="55" height="18" alt="preloader" />
+		<ul>
+		    <li title="<%= @hotel.photos[0].nil? ? asset_path('sin_foto.png') : @hotel.photos[0].data.url(:medium) %>">
 		    <% unless @hotel.photos[0].nil? %>
 			<ul class="align-left" title="<%= @hotel.photos[0].data.url %>"></ul>
 		    <% end %>
-		</li>
-		<li title="<%= @hotel.photos[1].nil? ? asset_path('sin_foto.png') : @hotel.photos[1].data.url(:medium) %>">
+		    </li>
+		    <li title="<%= @hotel.photos[1].nil? ? asset_path('sin_foto.png') : @hotel.photos[1].data.url(:medium) %>">
 		    <% unless @hotel.photos[1].nil? %>
 			<ul class="align-left" title="<%= @hotel.photos[1].data.url %>"></ul>
 		    <% end %>
-		</li>
-		<li title="<%= @hotel.photos[2].nil? ? asset_path('sin_foto.png') : @hotel.photos[2].data.url(:medium) %>">
+		    </li>
+		    <li title="<%= @hotel.photos[2].nil? ? asset_path('sin_foto.png') : @hotel.photos[2].data.url(:medium) %>">
 		    <% unless @hotel.photos[2].nil? %>
 			<ul class="align-left" title="<%= @hotel.photos[2].data.url %>"></ul>
 		    <% end %>
-		</li>
-		<li title="<%= @hotel.photos[3].nil? ? asset_path('sin_foto.png') : @hotel.photos[3].data.url(:medium) %>">		
+		    </li>
+		    <li title="<%= @hotel.photos[3].nil? ? asset_path('sin_foto.png') : @hotel.photos[3].data.url(:medium) %>">		
 		    <% unless @hotel.photos[3].nil? %>
 			<ul class="align-left" title="<%= @hotel.photos[3].data.url %>"></ul>
 		    <% end %>
-		</li>
-		<li title="<%= @hotel.photos[4].nil? ? asset_path('sin_foto.png') : @hotel.photos[4].data.url(:medium) %>">
+		    </li>
+		    <li title="<%= @hotel.photos[4].nil? ? asset_path('sin_foto.png') : @hotel.photos[4].data.url(:medium) %>">
 		    <% unless @hotel.photos[4].nil? %>
 			<ul class="align-left" title="<%= @hotel.photos[4].data.url %>"></ul>
 		    <% end %>
-		</li>
-	    </ul>
-	    <noscript>
-		<div id="noscript">
-		    <img src="<%= @hotel.photos.first.nil? ? asset_path('sin_foto.png') : @hotel.photos.first.data.url(:medium) %>" width="340" height="227" alt="<%= @hotel.name %>" />
-		</div>
-	    </noscript>
-	</div>
-    <% end %>
+		    </li>
+		</ul>
+		<noscript>
+		    <div id="noscript">
+			<img src="<%= @hotel.photos.first.nil? ? asset_path('sin_foto.png') : @hotel.photos.first.data.url(:medium) %>" width="340" height="227" alt="<%= @hotel.name %>" />
+		    </div>
+		</noscript>
+	    </div>
+	<% end %>
+	-->
 
-    <% unless @hotel.video.nil? %>
-	<div class="video-canvas">
-	    <iframe width="480" height="270" src="http://www.youtube.com/embed/<%= youtube(@hotel.video) %>" frameborder="0" allowfullscreen></iframe>
-	</div>
-    <% end %>
+	<% unless @hotel.video.nil? %>
+	    <div class="video-canvas">
+		<iframe width="480" height="270" src="http://www.youtube.com/embed/<%= youtube(@hotel.video) %>" frameborder="0" allowfullscreen></iframe>
+	    </div>
+	<% end %>
 
-</div>
+    </div>
 
 </div>

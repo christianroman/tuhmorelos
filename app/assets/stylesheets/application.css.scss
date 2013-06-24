@@ -396,10 +396,28 @@ body{
 }
 
 .hotel_description {
-    margin:10px 0;
+    margin:0 0 10px 0;
     text-shadow:0px 0px 2px white;
 }
 
 .blur {
     text-shadow:0px 0px 3px white;
+}
+
+.right_wrapper {
+    margin:30px 0 10px 5px;
+    height:470px;
+    overflow:scroll;
+}
+
+.photo-gallery {
+    width:480px;
+    margin:0 auto;
+    text-align:left;
+}
+
+.photo-gallery a {
+    display:block;
+    float:left;
+    margin: 5px 0 0 5px;
 }

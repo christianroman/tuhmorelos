@@ -9,7 +9,8 @@ module Admin
 		redirect_to admin_hotel_path(@current_hotel)
 	    else
 
-		@hotels = Hotel.all
+		#@hotels = Hotel.all
+		@hotels = Hotel.order('name ASC').page(params[:page]).per(20)
 
 		respond_to do |format|
 		    format.html # index.html.erb

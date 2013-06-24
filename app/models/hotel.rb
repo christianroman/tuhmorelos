@@ -1,5 +1,5 @@
 class Hotel < ActiveRecord::Base
-  attr_accessible :destination_id, :district, :email, :fare_id, :id, :name, :description, :paypal, :phone, :street, :video, :website, :zipcode, :lat, :lng, :photos_attributes, :category_ids
+  attr_accessible :destination_id, :district, :email, :fare_id, :id, :name, :description, :paypal, :phone, :street, :video, :website, :zipcode, :lat, :lng, :active, :photos_attributes, :category_ids
   belongs_to :fare 
   belongs_to :destination
   has_many :users
@@ -14,6 +14,7 @@ class Hotel < ActiveRecord::Base
 
   def self.search(destinations, fares, categories)
       scope = Hotel.scoped({})
+      scope = scope.scoped :conditions => ["hotels.active = (?)", true]
       scope = scope.scoped :conditions => ["hotels.destination_id IN (?)", destinations] unless destinations.blank?
       scope = scope.scoped :conditions => ["hotels.fare_id IN (?)", fares] unless fares.blank?
       scope = scope.scoped :conditions => ["categorizations.category_id IN (?)", categories], :joins => :categorizations unless categories.blank?

@@ -21,14 +21,6 @@
 	<td><b>Disponibles</b></td>
 	<td><%= @room.available %></td>
     </tr>
-    <tr>
-	<td><b>Adultos</b></td>
-	<td><%= @room.max_adults %></td>
-    </tr>
-    <tr>
-	<td><b>Niños</b></td>
-	<td><%= @room.max_children %></td>
-    </tr>
 </table>
 
 <%= link_to "Editar", edit_admin_room_path(@room), :class => 'btn' %>

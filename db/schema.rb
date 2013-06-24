@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619183416) do
+ActiveRecord::Schema.define(:version => 20130624201448) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",        :null => false
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(:version => 20130619183416) do
     t.integer  "fare_id"
     t.string   "video"
     t.string   "paypal"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.text     "description"
+    t.boolean  "active",         :default => true, :null => false
   end
 
   create_table "payment_notifications", :force => true do |t|
@@ -124,13 +125,11 @@ ActiveRecord::Schema.define(:version => 20130619183416) do
   create_table "rooms", :force => true do |t|
     t.integer  "hotel_id"
     t.string   "name"
-    t.decimal  "fare",         :precision => 10, :scale => 0
+    t.decimal  "fare",       :precision => 10, :scale => 0
     t.integer  "existence"
     t.integer  "available"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
-    t.integer  "max_adults"
-    t.integer  "max_children"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "settings", :force => true do |t|
