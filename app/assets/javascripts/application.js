@@ -1,9 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-datepicker
-//= require zoom-showcase
-//= require jquery.easing
-//= require jquery.clip-animation
 //= require jquery.fancybox
 //= require jquery.backstretch
 
