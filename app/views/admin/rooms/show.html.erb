@@ -21,6 +21,22 @@
 	<td><b>Disponibles</b></td>
 	<td><%= @room.available %></td>
     </tr>
+    <tr>
+	<td><b>Tarifas personalizadas</b></td>
+	<td>
+	    <% if @room.room_fares.empty? %>
+		Ninguna
+	    <% else %>
+		<% @room.room_fares.each do |room_fare| %>
+		    <ul>
+			<li>
+			<%= "<b>$#{room_fare.fare}</b> de <span class=\"label label-success\">#{room_fare.start_date}</span> a <span class=\"label label-important\">#{room_fare.end_date}</span>".html_safe %>
+			</li>
+		    </ul>
+		<% end %>
+	    <% end %>
+	</td>
+    </tr>
 </table>
 
 <%= link_to "Editar", edit_admin_room_path(@room), :class => 'btn' %>

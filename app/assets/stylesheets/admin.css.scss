@@ -1,6 +1,7 @@
 //= require_self
 
 @import 'bootstrap';
+@import 'bootstrap-datepicker';
 
 .well h1, .well h2 {
     margin:0px 5px;
@@ -29,4 +30,8 @@ form label {
 
 .photo{
     margin:5px 5px 15px 5px;
+}
+
+.input-datepicker {
+    width:241px;
 }

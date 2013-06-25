@@ -45,6 +45,14 @@
 	</tr>
     </table>
 
+     <%= f.fields_for :room_fares do |builder| %>
+	 <%= render 'room_fare_fields', f: builder %>
+     <% end %>
+
+    <%= link_to_add_fields "Agregar tarifa", f, :room_fares %>
+
+    <br /><br />
+
     <%= f.submit :class => 'btn btn-primary' %>
 
 <% end %>
