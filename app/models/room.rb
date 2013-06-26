@@ -3,7 +3,7 @@ class Room < ActiveRecord::Base
     belongs_to :hotel
     has_many :reservations
     has_many :room_fares
-    accepts_nested_attributes_for :room_fares, allow_destroy: true
+    accepts_nested_attributes_for :room_fares, allow_destroy: true, :reject_if => proc { |a| a['fare'].blank? }
 
     private
     def name_and_fare

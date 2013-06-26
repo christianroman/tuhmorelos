@@ -27,12 +27,14 @@
 	    </div>
 	</td>
     </tr>
-    <tr>
-	<td>
-	    <%= f.label :_destroy, "Eliminar tarifa" %>
-	</td>
-	<td>
-	    <%= f.check_box :_destroy %>
-	</td>
-    </tr>
+    <% if f.object.persisted? %>
+	<tr>
+	    <td>
+		<%= f.label :_destroy, "Eliminar tarifa" %>
+	    </td>
+	    <td>
+		<%= f.check_box :_destroy %>
+	    </td>
+	</tr>
+    <% end %>
 </table>

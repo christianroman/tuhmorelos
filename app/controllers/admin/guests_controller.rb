@@ -3,7 +3,17 @@ module Admin
 	load_and_authorize_resource
 
 	def index
-	    @guests = Guest.all
+	    
+	    unless @current_hotel.nil?
+		@guests = @current_hotel.guests
+	    else
+		@guests = Guest.all
+	    end
+	    
+	    respond_to do |format|
+		format.html
+	    end
+
 	end
 
 	def show
