@@ -26,10 +26,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
 
-  gem 'kaminari-bootstrap'
-
 end
 
+gem 'kaminari-bootstrap'
 gem 'rabl'
 
 gem 'nifty-generators'
