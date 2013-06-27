@@ -5,11 +5,11 @@
 
 <div class="clearfix">
 
-    <% unless flash[:notice].blank? %>
-	<div class="alert alert-error">
-	    <strong>RESERVACIÓN NO REALIZADA! </strong> Los datos ingresados no son correctos, favor de verificarlos.
-	</div>
-    <% end %>
+    <div id="status_alert" class="alert alert-error" style="display:none;">
+	<strong>RESERVACIÓN NO REALIZADA! </strong> Favor de revisar los siguientes errores:
+	<br /><br/>
+	<ul class="unstyled"></ul>
+    </div>
 
     <div class="left_side">
 
@@ -17,7 +17,7 @@
 
 	<div class="form-canvas">
 
-	    <%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal') do %>
+	    <%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal', :remote => true, :'data-update-target' => 'status_alert') do %>
 		<div class="control-group">
 		    <%= label_tag 'nombre', 'Nombre', :class => 'control-label' %>
 		    <div class="controls">

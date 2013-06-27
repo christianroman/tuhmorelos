@@ -16,63 +16,66 @@ class HotelsController < ApplicationController
     def create
 
 	@guest = Guest.new(name: params[:nombre], email: params[:email], phone: params[:telefono])
-	if @guest.valid?	  
-	    if @guest.save
 
-		check_in_date = params[:check_in].to_time
-		check_out_date = params[:check_out].to_time
-		days = ((check_out_date - check_in_date) / 1.day).to_i
+	respond_to do |format|
 
-		unless params[:room][:room_id].empty?
+	    if @guest.valid?	  
+		if @guest.save
 
-		    total_amount = days * Room.find(params[:room][:room_id]).fare
-		    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
+		    check_in_date = params[:check_in].to_time
+		    check_out_date = params[:check_out].to_time
+		    days = ((check_out_date - check_in_date) / 1.day).to_i
 
-		    if @reservation.valid?
-			if @reservation.save
-			    #redirect_to_paypal
-			    #redirect_to Hotel.find(params[:id])
+		    unless params[:room][:room_id].empty?
 
-			    return_url = root_url
+			total_amount = days * Room.find(params[:room][:room_id]).fare
+			@reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
 
-			    values = {
-				:business => @reservation.hotel.paypal,
-				:cmd => '_xclick',
-				:upload => 1,
-				:currency_code => 'MXN',
-				:return => return_url,
-				:invoice => @reservation.id,
-				:notify_url => payment_notifications_url,
-				:amount => @reservation.total_amount,
-				:item_name => "#{days} noches en #{@reservation.hotel.name}".encode,
-				:item_number => @reservation.hotel.id,
-				:quantity => 1
-			    }
+			if @reservation.valid?
+			    if @reservation.save
 
-			    redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+				return_url = root_url
 
-			    return
+				values = {
+				    :business => @reservation.hotel.paypal,
+				    :cmd => '_xclick',
+				    :upload => 1,
+				    :currency_code => 'MXN',
+				    :return => return_url,
+				    :invoice => @reservation.id,
+				    :notify_url => payment_notifications_url,
+				    :amount => @reservation.total_amount,
+				    :item_name => "#{days} noches en #{@reservation.hotel.name}".encode,
+				    :item_number => @reservation.hotel.id,
+				    :quantity => 1
+				}
+
+				format.json{ render :json => { :location => "https://www.sandbox.paypal.com/cgi-bin/webscr?#{values.to_query}" } }
+				#return
+
+			    end
+			else
+
+			    @guest.destroy
+
+			    @errors = @reservation.errors.full_messages
+			    format.json { render :json => @errors }
+
 			end
+
 		    else
 
+			@errors = ["Habitaci&oacute;n no seleccionada"]
 			@guest.destroy
-
-			@errors = @reservation.errors
-			redirect_to Hotel.find(params[:id]), :notice => @errors
+			format.json { render :json => @errors }
 
 		    end
-
-		else
-
-		    @errors = true
-		    @guest.destroy
-		    redirect_to Hotel.find(params[:id]), :notice => @errors
-
 		end
+	    else
+		@errors = @guest.errors.full_messages
+		format.json { render :json => @errors }
 	    end
-	else
-	    @errors = @guest.errors
-	    redirect_to Hotel.find(params[:id]), :notice => @errors
+
 	end
 
     end

@@ -29,6 +29,9 @@
 				<li class="<%= active_class?(admin_rooms_path) %>"><%= link_to 'Habitaciones', admin_rooms_path %></li>
 				<li class="<%= active_class?(admin_guests_path) %>"><%= link_to 'Clientes', admin_guests_path %></li>
 				<li class="<%= active_class?(admin_reservations_path) %>"><%= link_to 'Reservaciones', admin_reservations_path %></li>
+				<% if can? :manage, Page %>
+				    <li class="<%= active_class?(admin_pages_path) %>"><%= link_to 'Paginas', admin_pages_path %></li>
+				<% end %>
 				<% if can? :manage, User %>
 				    <li class="<%= active_class?(admin_users_path) %>"><%= link_to 'Usuarios', admin_users_path %></li>
 				<% end %>

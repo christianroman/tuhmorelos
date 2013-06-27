@@ -1,6 +1,5 @@
 Tuhmorelos::Application.routes.draw do
 
-
     ###########################################################
     # Admin
     namespace :admin do
@@ -19,6 +18,7 @@ Tuhmorelos::Application.routes.draw do
 	resources :rooms, :path => 'habitaciones'
 	resources :guests, :path => 'clientes'
 	resources :reservations, :path => 'reservaciones'
+	resources :pages, :path => 'paginas'
 
 	get 'ajustes' => 'settings#edit'
 	resources :settings, :path => 'ajustes', :only => ['edit', 'update']
@@ -48,7 +48,9 @@ Tuhmorelos::Application.routes.draw do
 
     resources :search, :only => :index
 
-    resources :hotels, :path => 'hoteles'
+    resources :hotels, :path => 'hoteles', :only => [:show, :create]
+
+    resources :pages, :path => 'paginas', :only => :show
 
     post 'hoteles/:id/reservar' => 'hotels#create'
 

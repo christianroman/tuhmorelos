@@ -26,6 +26,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
 
+  gem 'ckeditor'
+
 end
 
 gem 'kaminari-bootstrap'
