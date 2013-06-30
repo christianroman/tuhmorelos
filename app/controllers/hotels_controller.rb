@@ -6,10 +6,11 @@ class HotelsController < ApplicationController
 
     def show
 
-	@hotel = Hotel.find(params[:id])
+	#@hotel = Hotel.find(params[:id])
+	#@hotel = Hotel.find_by_slug!(request.subdomain)
 	respond_to do |format|
-	    format.html
-	    format.js
+	    format.html {@hotel = Hotel.find_by_slug!(request.subdomain)}
+	    format.js {@hotel = Hotel.find(params[:id])}
 	end
     end
 

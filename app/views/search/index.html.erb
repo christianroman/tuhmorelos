@@ -17,7 +17,7 @@
 	    Teléfonos: <%= hotel.phone %><br />
 	    <%= hotel.email %><br />
 
-	    <%= link_to "Reserva en línea", hotel_path(hotel), :class => "btn btn-purple" %>
+	    <%= link_to "Reserva en línea", root_url(subdomain:hotel.slug), :class => "btn btn-purple" %>
 	    <a href="<%= "http://#{hotel.website}" %>" class="btn btn-green" target="_blank">Visitar sitio web</a>
 
 	</div>

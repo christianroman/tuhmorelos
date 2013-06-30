@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627021449) do
+ActiveRecord::Schema.define(:version => 20130629154706) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",        :null => false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130627021449) do
     t.datetime "updated_at",                       :null => false
     t.text     "description"
     t.boolean  "active",         :default => true, :null => false
+    t.string   "slug"
   end
 
   create_table "pages", :force => true do |t|

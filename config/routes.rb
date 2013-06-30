@@ -42,19 +42,18 @@ Tuhmorelos::Application.routes.draw do
     ###########################################################
     # UI
 
-    root :to => 'home#index'
-
-    #resources :home :
-
     resources :search, :only => :index
 
     resources :hotels, :path => 'hoteles', :only => [:show, :create]
+    match '', to: 'hotels#show', constraints: {subdomain: /.+/}
 
     resources :pages, :path => 'paginas', :only => :show
 
     post 'hoteles/:id/reservar' => 'hotels#create'
 
     resources :payment_notifications
+
+    root :to => 'home#index'
 
     #resources :home do
     #	collection do
