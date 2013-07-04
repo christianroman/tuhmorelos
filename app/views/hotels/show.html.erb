@@ -11,6 +11,10 @@
 	<ul class="unstyled"></ul>
     </div>
 
+    <div id="status_success" class="alert alert-success" style="display:none;">
+	<strong>SOLICITUD RECIBIDA! </strong> Nos pondremos en contacto con usted lo mas pronto posible. Muchas gracias
+    </div>
+
     <div class="left_side">
 
 	<h3 class="green blur">Reserva en línea</h3>
@@ -115,13 +119,21 @@
 
 	    <% unless @hotel.photos.empty? %>
 
-		<div class="photo-gallery clearfix">
-		    <% @hotel.photos.each_with_index do |photo,i| %>
-			<a class="fancybox" rel="gallery1" href="<%= photo.data.url(:original) %>" title="<%= "#{@hotel.name} #{i+1}" %>">
-			    <img src="<%= photo.data.url(:thumb) %>" alt="" />
-			</a>
+		<table class="photo-gallery">
+		    <% @hotel.photos.in_groups_of(3) do |group| %>
+			<tr>
+			    <% group.each_with_index do |photo,i| %>
+				<% if photo.nil? %>
+				    <td>&nbsp;</td>
+				<% else %>
+				    <td>
+					<a class="fancybox" rel="gallery1" href="<%= photo.data.url(:original) %>" title="<%= "#{@hotel.name} #{i+1}" %>"><img src="<%= photo.data.url(:thumb) %>" alt="" /></a>
+				    </td>
+				<% end %>
+			    <% end %>
+			</tr>
 		    <% end %>
-		</div>
+		</table>
 
 	    <% end %>
 
@@ -167,7 +179,7 @@
 	<% end %>
 	-->
 
-	<% unless @hotel.video.nil? %>
+	<% unless @hotel.video.blank? %>
 	    <div class="video-canvas">
 		<iframe width="480" height="270" src="http://www.youtube.com/embed/<%= youtube(@hotel.video) %>" frameborder="0" allowfullscreen></iframe>
 	    </div>

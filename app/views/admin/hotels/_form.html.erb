@@ -99,6 +99,7 @@
 		<%= f.text_area :description, :cols => 20, :rows => 3, :class => 'input-textarea' %>
 	    </td>
 	</tr>
+	<% if current_admin_user.role?(:super_admin) %>
 	<tr>
 	    <td>
 		<%= f.label :active, "Activo" %>
@@ -107,6 +108,7 @@
 		<%= f.check_box :active %>
 	    </td>
 	</tr>
+	<% end %>
 	<tr>
 	    <td>
 		<b>Categorias</b>

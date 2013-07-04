@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629154706) do
+ActiveRecord::Schema.define(:version => 20130704001340) do
 
   create_table "assets", :force => true do |t|
     t.datetime "created_at",        :null => false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20130629154706) do
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
     t.integer  "setting_id"
+  end
+
+  create_table "availabilities", :force => true do |t|
+    t.integer  "hotel_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -34,6 +42,19 @@ ActiveRecord::Schema.define(:version => 20130629154706) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "room_id"
+    t.integer  "guest_id"
+    t.date     "check_in"
+    t.date     "check_out"
+    t.text     "comment"
+    t.integer  "adults"
+    t.integer  "children"
+    t.integer  "hotel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "destinations", :force => true do |t|

@@ -11,10 +11,8 @@
 	<td>
 	    <%= f.label :start_date, 'Fecha de inicio' %>
 	</td>
-	<td class="parent">
-	    <div class="input-append date datepicker-start" data-date="<%= Time.now.strftime('%d/%m/%Y') %>" data-date-format="dd-mm/yyyy">
-		<%= f.text_field :start_date, :value => Time.now.strftime('%d/%m/%Y'), :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
-	    </div>
+	<td>
+	    <%= f.date_select :start_date %>
 	</td>
     </tr>
     <tr>
@@ -22,9 +20,7 @@
 	    <%= f.label :end_date, 'Fecha de fin' %>
 	</td>
 	<td>
-	    <div class="input-append date datepicker-end" data-date="<%= (Time.now + 1.days).strftime('%d/%m/%Y') %>" data-date-format="dd-mm-yyyy">
-		<%= f.text_field :end_date, :value => (Time.now + 1.days).strftime('%d/%m/%Y'), :class => 'input-datepicker', :readonly => true %><span class="add-on"><i class="icon-th"></i></span>
-	    </div>
+	    <%= f.date_select :end_date %>
 	</td>
     </tr>
     <% if f.object.persisted? %>

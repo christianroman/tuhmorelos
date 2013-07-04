@@ -302,13 +302,15 @@ body{
 	}
 
     .item .info {
+	font-size:14px;
 	text-align:left;
 	width: 363px;
 	float:left;
 	padding-top:10px;
 	margin-left:30px;
 	color:$purpleTextColor;
-	text-shadow: 0px 0px 2px white;
+	text-shadow: 0px 0px 3px white;
+	font-weight:bold;
     }
 
     .item .info .title {
@@ -395,8 +397,15 @@ body{
 }
 
 .hotel_description {
-    margin:0 0 10px 0;
-    text-shadow:0px 0px 2px white;
+    color:$purpleTextColor;
+    font-weight:bold;
+    padding:20px;
+    width:440px;
+    height:126px;
+    background:transparent url('description.png') no-repeat top center;
+    margin:0 0 0 20px;
+    text-shadow:0px 0px 1px white;
+    overflow:scroll;
 }
 
 .blur {
@@ -404,19 +413,23 @@ body{
 }
 
 .right_wrapper {
-    margin:30px 0 10px 5px;
-    height:470px;
+    margin:20px 0 10px 5px;
+    height:480px;
     overflow:scroll;
 }
 
 .photo-gallery {
     width:480px;
-    margin:0 auto;
+    margin:27px auto 0 auto;
     text-align:left;
+}
+
+.photo-gallery td {
+    vertical-align:top;
 }
 
 .photo-gallery a {
     display:block;
     float:left;
-    margin: 5px 0 0 5px;
+    margin: 5px 0 0 0;
 }

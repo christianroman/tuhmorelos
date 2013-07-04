@@ -12,6 +12,8 @@ class Ability
 	  can :manage, Room, :hotel_id => user.hotel_id
 	  can :manage, Guest
 	  can :manage, Reservation, :hotel_id => user.hotel_id
+	  can :manage, Contact, :hotel_id => user.hotel_id
+	  can :manage, Availability, :hotel_id => user.hotel_id
 	  can :update, User, :id => user.id
       elsif user.role? :hotel_staff
 	  #can :read, [Hotel, Room, Guest, Reservation]
@@ -19,6 +21,8 @@ class Ability
 	  can :read, Room, :hotel_id => user.hotel_id
 	  can :read, Guest
 	  can :read, Reservation, :hotel_id => user.hotel_id
+	  can :read, Contact, :hotel_id => user.hotel_id
+	  can :read, Availability, :hotel_id => user.hotel_id
       end
 
     # Define abilities for the passed in user here. For example:

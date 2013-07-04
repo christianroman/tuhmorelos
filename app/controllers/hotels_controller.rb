@@ -9,7 +9,8 @@ class HotelsController < ApplicationController
 	#@hotel = Hotel.find(params[:id])
 	#@hotel = Hotel.find_by_slug!(request.subdomain)
 	respond_to do |format|
-	    format.html {@hotel = Hotel.find_by_slug!(request.subdomain)}
+	    #format.html {@hotel = Hotel.find_by_slug!(request.subdomain)}
+	    format.html {@hotel = Hotel.find(params[:id])}
 	    format.js {@hotel = Hotel.find(params[:id])}
 	end
     end
@@ -30,37 +31,64 @@ class HotelsController < ApplicationController
 		    unless params[:room][:room_id].empty?
 
 			total_amount = days * Room.find(params[:room][:room_id]).fare
-			@reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
 
-			if @reservation.valid?
-			    if @reservation.save
 
-				return_url = root_url
+			unless Hotel.find(params[:id]).paypal.blank?
 
-				values = {
-				    :business => @reservation.hotel.paypal,
-				    :cmd => '_xclick',
-				    :upload => 1,
-				    :currency_code => 'MXN',
-				    :return => return_url,
-				    :invoice => @reservation.id,
-				    :notify_url => payment_notifications_url,
-				    :amount => @reservation.total_amount,
-				    :item_name => "#{days} noches en #{@reservation.hotel.name}".encode,
-				    :item_number => @reservation.hotel.id,
-				    :quantity => 1
-				}
+			    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
 
-				format.json{ render :json => { :location => "https://www.sandbox.paypal.com/cgi-bin/webscr?#{values.to_query}" } }
-				#return
+			    if @reservation.valid?
+				if @reservation.save
+
+				    return_url = root_url
+
+				    values = {
+					:business => @reservation.hotel.paypal,
+					:cmd => '_xclick',
+					:upload => 1,
+					:currency_code => 'MXN',
+					:return => return_url,
+					:invoice => @reservation.id,
+					:notify_url => payment_notifications_url,
+					:amount => @reservation.total_amount,
+					:item_name => "#{days} noches en #{@reservation.hotel.name}".encode,
+					:item_number => @reservation.hotel.id,
+					:quantity => 1
+				    }
+
+				    format.json{ render :json => { :location => "https://www.sandbox.paypal.com/cgi-bin/webscr?#{values.to_query}" } }
+				    #return
+
+				end
+			    else
+
+				@guest.destroy
+
+				@errors = @reservation.errors.full_messages
+				format.json { render :json => @errors }
 
 			    end
+
 			else
 
-			    @guest.destroy
+			    @contact = Contact.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id])
+			    
+			    if @contact.valid?
 
-			    @errors = @reservation.errors.full_messages
-			    format.json { render :json => @errors }
+				if @contact.save
+
+				    format.json {render :json => {:success => true}}
+
+				end
+
+			    else
+
+				@guest.destroy
+
+				@errors = @contact.errors_full_messages
+				format.json {render :json => @errors}
+
+			    end
 
 			end
 

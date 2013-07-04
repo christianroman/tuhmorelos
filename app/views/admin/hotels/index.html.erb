@@ -1,5 +1,22 @@
-<div class="well">
-    <h2>Hoteles</h2>
+<div class="well clearfix">
+    <h2 style="display:block; float:left; width:200px; margin-top:10px">Hoteles</h2>
+
+    <table class="totals pull-right">
+	<tr>
+	    <td><strong>Total: </strong></td><td><%= @total_hotels %></td>
+	</tr>
+	<tr>
+	    <td><strong>Activos: </strong></td><td><%= @total_active_hotels %></td>
+	</tr>
+	<tr>
+	    <td><strong>Inactivos: </strong></td><td><%= @total_inactive_hotels %></td>
+	</tr>
+    </table>
+
+</div>
+
+<div class="button-wrapper">
+    <%= link_to 'Nuevo Hotel', new_admin_hotel_path, :class => 'btn btn-primary' %>
 </div>
 
 <%= paginate @hotels %>
@@ -34,5 +51,3 @@
 <%= paginate @hotels %>
 
 <br />
-
-<%= link_to 'Nuevo Hotel', new_admin_hotel_path, :class => 'btn btn-primary' %>

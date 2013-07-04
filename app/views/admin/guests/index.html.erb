@@ -2,6 +2,10 @@
     <h2>Clientes</h2>
 </div>
 
+<div class="button-wrapper">
+    <%= link_to 'Nuevo cliente', new_admin_guest_path, :class => 'btn btn-primary' %>
+</div>
+
 <table class="table table-bordered table-hover">
     <thead>
 	<tr>
@@ -28,5 +32,3 @@
 </table>
 
 <br />
-
-<%= link_to 'Nuevo cliente', new_admin_guest_path, :class => 'btn btn-primary' %>

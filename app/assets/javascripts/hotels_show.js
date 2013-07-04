@@ -70,6 +70,8 @@ $(function() {
     $(document).on("ajax:success", "form[data-update-target]", function(evt, data){
 	if (data.location) {
 	    window.location.href = data.location;
+	} else if (data.success) {
+	    $('#status_success').fadeIn();
 	} else {
 	    if (data){
 		for (var i = 0; i < data.length; i++) 

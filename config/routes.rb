@@ -18,6 +18,8 @@ Tuhmorelos::Application.routes.draw do
 	resources :rooms, :path => 'habitaciones'
 	resources :guests, :path => 'clientes'
 	resources :reservations, :path => 'reservaciones'
+	resources :contacts, :path => 'contactos'
+	resources :availabilities, :path => 'fechas'
 	resources :pages, :path => 'paginas'
 
 	get 'ajustes' => 'settings#edit'
@@ -45,7 +47,7 @@ Tuhmorelos::Application.routes.draw do
     resources :search, :only => :index
 
     resources :hotels, :path => 'hoteles', :only => [:show, :create]
-    match '', to: 'hotels#show', constraints: {subdomain: /.+/}
+    #match '', to: 'hotels#show', constraints: {subdomain: /.+/}
 
     resources :pages, :path => 'paginas', :only => :show
 

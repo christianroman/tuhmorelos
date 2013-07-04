@@ -1,3 +1,8 @@
+<div class="button-wrapper clearfix">
+    <%= link_to "Regresar", admin_guests_path, :class => 'btn' %>
+    <%= link_to "Editar", edit_admin_guest_path(@guest), :class => 'btn' %>
+</div>
+
 <table class="table table-bordered table-striped">
     <tr>
 	<td width="121">&nbsp;</td>
@@ -20,7 +25,3 @@
 	<td><%= @guest.hotel.nil? ? 'Ninguno asociado' : @guest.hotel.name %></td>
     </tr>
 </table>
-
-<%= link_to "Editar", edit_admin_guest_path(@guest), :class => 'btn' %>
-<%= link_to "Regresar", admin_guests_path, :class => 'btn' %>
-

@@ -12,13 +12,13 @@
 	    <div class="navbar-inner">
 		<div class="container">
 		    <a class="brand" href="/admin"><%= admin_user_signed_in? ? current_admin_user.role?(:super_admin) ? 'Tu Hotel en Morelos Admin' : current_admin_user.hotel.name : 'Tu Hotel en Morelos Admin' %></a>
-		    
+
 		    <% if admin_user_signed_in? %>
 			<div class="nav-collapse">
 
 			    <ul class="nav">
 				<li class="<%= active_class?(admin_hotels_path) %>">
-				    <%= link_to current_admin_user.role?(:super_admin) ? 'Hoteles' : 'Hotel', admin_hotels_path %>
+				<%= link_to current_admin_user.role?(:super_admin) ? 'Hoteles' : 'Hotel', admin_hotels_path %>
 				</li>
 				<% if can? :manage, Destination %>
 				    <li class="<%= active_class?(admin_destinations_path) %>"><%= link_to 'Destinos', admin_destinations_path %></li>
@@ -26,9 +26,19 @@
 				<% if can? :manage, Category %>
 				    <li class="<%= active_class?(admin_categories_path) %>"><%= link_to 'Categorias', admin_categories_path %></li>
 				<% end %>
-				<li class="<%= active_class?(admin_rooms_path) %>"><%= link_to 'Habitaciones', admin_rooms_path %></li>
+				<% unless current_admin_user.role?(:super_admin) %>
+				    <li class="<%= active_class?(admin_rooms_path) %>"><%= link_to 'Habitaciones', admin_rooms_path %></li>
+				<% end %>
 				<li class="<%= active_class?(admin_guests_path) %>"><%= link_to 'Clientes', admin_guests_path %></li>
-				<li class="<%= active_class?(admin_reservations_path) %>"><%= link_to 'Reservaciones', admin_reservations_path %></li>
+				<% unless current_admin_user.role?(:super_admin) %>
+				    <li class="<%= active_class?(admin_reservations_path) %>"><%= link_to 'Reservaciones', admin_reservations_path %></li>
+				<% end %>
+				<% unless current_admin_user.role?(:super_admin) %>
+				    <li class="<%= active_class?(admin_contacts_path) %>"><%= link_to 'Contactos', admin_contacts_path %></li>
+				<% end %>
+				<% unless current_admin_user.role?(:super_admin) %>
+				    <li class="<%= active_class?(admin_availabilities_path) %>"><%= link_to 'Fechas', admin_availabilities_path %></li>
+				<% end %>
 				<% if can? :manage, Page %>
 				    <li class="<%= active_class?(admin_pages_path) %>"><%= link_to 'Paginas', admin_pages_path %></li>
 				<% end %>
@@ -67,5 +77,5 @@
 
 	<div class="admin-footer"></div>
 
-	</body>
-    </html>
+    </body>
+</html>

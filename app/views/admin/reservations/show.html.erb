@@ -1,3 +1,8 @@
+<div class="button-wrapper">
+    <%= link_to 'Regresar', admin_reservations_path, :class => 'btn' %>
+    <%= link_to 'Editar', edit_admin_reservation_path(@reservation), :class => 'btn' %>
+</div>
+
 <table class="table table-bordered table-striped">
 
     <tr>
@@ -70,6 +75,3 @@
 	<td><%= @reservation.payment_notification.nil? ? 'No disponible' : @reservation.payment_notification.created_at.strftime('%d/%m/%Y %I:%M%p') %></td>
     </tr>
 </table>
-
-<%= link_to 'Editar', edit_admin_reservation_path(@reservation), :class => 'btn' %>
-<%= link_to 'Regresar', admin_reservations_path, :class => 'btn' %>

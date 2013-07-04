@@ -2,6 +2,10 @@
     <h2>Categorias</h2>
 </div>
 
+<div class="button-wrapper">
+<%= link_to 'Nueva Categoria', new_admin_category_path, :class => 'btn btn-primary' %>
+</div>
+
 <table class="table table-bordered table-hover">
     <thead>
 	<tr>
@@ -24,5 +28,3 @@
 </table>
 
 <br />
-
-<%= link_to 'Nueva Categoria', new_admin_category_path, :class => 'btn btn-primary' %>

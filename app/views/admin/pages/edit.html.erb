@@ -2,6 +2,8 @@
     <h2>Editar Pagina</h2>
 </div>
 
-<%= render 'form' %>
+<div class="button-wrapper">
+    <%= link_to 'Regresar', admin_pages_path, :class => 'btn' %>
+</div>
 
-<%= link_to 'Regresar', admin_pages_path, :class => 'btn' %>
+<%= render 'form' %>

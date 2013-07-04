@@ -12,6 +12,10 @@ module Admin
 		#@hotels = Hotel.all
 		@hotels = Hotel.order('name ASC').page(params[:page]).per(20)
 
+		@total_hotels = Hotel.count
+		@total_active_hotels = Hotel.where(active: 1).count
+		@total_inactive_hotels = Hotel.where(active: 0).count
+
 		respond_to do |format|
 		    format.html # index.html.erb
 		end
@@ -32,7 +36,7 @@ module Admin
 	# GET /hotels/new.json
 	def new
 	    @hotel = Hotel.new
-	    5.times {@hotel.photos.build}
+	    6.times {@hotel.photos.build}
 
 	    respond_to do |format|
 		format.html # new.html.erb
@@ -42,7 +46,7 @@ module Admin
 	# GET /hotels/1/edit
 	def edit
 	    @hotel = Hotel.find(params[:id])
-	    (5 - @hotel.photos.length).times { @hotel.photos.build }
+	    (6 - @hotel.photos.length).times { @hotel.photos.build }
 	end
 
 	# POST /hotels
