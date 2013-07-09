@@ -251,18 +251,19 @@ body{
 }
 
 .main_footer {
-    padding-top:45px;
+    padding-top:15px;
+    padding-bottom:10px;
     vertical-align:middle;
     margin:0 auto;
-    width:885px;
+    width:1075px;
 }
 
 .link_footer {
-    margin-right:10px;
+    margin-right:5px;
     text-align:center;
-    font-size: $baseFontSize + 12px;
+    /*font-size: $baseFontSize + 12px;
     color:#1b1464;
-    font-weight:700;
+    font-weight:700;*/
     float:left;
     display:block;
     width:210px;
@@ -273,6 +274,12 @@ body{
     color: #d5cc7c;
     */
     text-decoration:none;
+}
+
+.promo {
+    position:absolute;
+    bottom:20px;
+    left:5%;
 }
 
 .item {
@@ -433,3 +440,4 @@ body{
     float:left;
     margin: 5px 0 0 0;
 }
+

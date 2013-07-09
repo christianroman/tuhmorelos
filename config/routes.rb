@@ -47,7 +47,7 @@ Tuhmorelos::Application.routes.draw do
     resources :search, :only => :index
 
     resources :hotels, :path => 'hoteles', :only => [:show, :create]
-    #match '', to: 'hotels#show', constraints: {subdomain: /.+/}
+    match '', to: 'hotels#show', constraints: {subdomain: /.+/}
 
     resources :pages, :path => 'paginas', :only => :show
 
