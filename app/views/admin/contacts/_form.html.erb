@@ -8,7 +8,7 @@
 		<%= f.label :hotel_id, 'Hotel' %>
 	    </td>
 	    <td>
-		<%= collection_select :contact, :hotel_id, Hotel.all, :id, :name, {}, { :class => 'input-select' } %>
+		<%= collection_select :contact, :hotel_id, @current_hotel.nil? ? Hotel.all : Array(current_admin_user.hotel), :id, :name, {}, { :class => 'input-select' } %>
 	    </td>
 	    <tr>
 		<td>
