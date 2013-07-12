@@ -32,7 +32,6 @@ class HotelsController < ApplicationController
 
 			total_amount = days * Room.find(params[:room][:room_id]).fare
 
-
 			unless Hotel.find(params[:id]).paypal.blank?
 
 			    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)

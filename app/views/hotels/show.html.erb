@@ -1,9 +1,9 @@
 <% javascript 'hotels_show' %>
 <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' %>
 
-<h1 class="blur"><%= @hotel.name %></h1>
+<span class="page_title blur"><%= @hotel.name %></span>
 
-<div class="clearfix">
+<div class="page_content clearfix">
 
     <div id="status_alert" class="alert alert-error" style="display:none;">
 	<strong>RESERVACIÓN NO REALIZADA! </strong> Favor de revisar los siguientes errores:
@@ -17,9 +17,9 @@
 
     <div class="left_side">
 
-	<h3 class="green blur">Reserva en línea</h3>
+	<span class="page_subtitle blur">Reserva en línea</span>
 
-	<div class="form-canvas">
+	<div class="form-canvas alpha clearfix">
 
 	    <%= form_tag("/hoteles/#{@hotel.id}/reservar", :method => 'post', :name => 'reservation_form', :class => 'form-horizontal', :remote => true, :'data-update-target' => 'status_alert') do %>
 		<div class="control-group">
@@ -91,10 +91,10 @@
 		</div>
 		<div class="control-group">
 		    <div class="controls">
-			<!--<%= hidden_field_tag "hotel_id", @hotel.id %>-->
-			<%= button_tag(type: 'submit', class: 'btn btn-custom pull-right') do %>
-			    Reserva ya
+			<% unless @hotel.paypal.blank? %>
+			    <%= submit_tag 'Reserva ya', :class => 'btn btn-custom pull-right' %>
 			<% end %>
+			<%= submit_tag 'Solicitar Información', :class => "btn btn-custom pull-right" %>
 		    </div>
 		</div>
 
@@ -110,7 +110,7 @@
 
     <div class="right_side">
 
-	<h3 class="green blur">Descripción</h3>
+	<span class="page_subtitle blur">Descripción</span>
 
 	<div class="right_wrapper">
 

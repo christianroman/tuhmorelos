@@ -36,7 +36,7 @@
 	<% unless background_images.empty? %>
 	<div class="background-images" style="display:none;">
 	    <% background_images.each do |bg| %>
-		<span data-url="<%= bg.data.url %>"></span>
+		<span data-url="<%= bg.data.url(:original) %>"></span>
 	    <% end %>
 	</div>
 	<% end %>
