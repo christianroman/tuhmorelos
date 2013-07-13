@@ -9,9 +9,26 @@ class HotelsController < ApplicationController
 	#@hotel = Hotel.find(params[:id])
 	#@hotel = Hotel.find_by_slug!(request.subdomain)
 	respond_to do |format|
-	    format.html {@hotel = Hotel.find_by_slug!(request.subdomain)}
-	    #format.html {@hotel = Hotel.find(params[:id])}
-	    format.js {@hotel = Hotel.find(params[:id])}
+	    format.html {
+
+		@hotel = Hotel.find_by_slug!(request.subdomain)
+
+		@dates = Array.new
+		@hotel.availabilities.each do |range|
+		    @dates |= (range.start_date..range.end_date).map{ |date| date.strftime('%d/%m/%Y') }
+		end		
+
+	    }
+	    format.js {
+
+		@hotel = Hotel.find(params[:id])
+
+		@dates = Array.new
+		@hotel.availabilities.each do |range|
+		    @dates |= (range.start_date..range.end_date).map{ |date| date.strftime('%d/%m/%Y') }
+		end
+
+	    }
 	end
     end
 
@@ -28,11 +45,11 @@ class HotelsController < ApplicationController
 		    check_out_date = params[:check_out].to_time
 		    days = ((check_out_date - check_in_date) / 1.day).to_i
 
-		    unless params[:room][:room_id].empty?
+		    if params[:commit] == 'Reserva ya'
 
-			total_amount = days * Room.find(params[:room][:room_id]).fare
+			unless params[:room][:room_id].empty?
 
-			unless Hotel.find(params[:id]).paypal.blank?
+			    total_amount = days * Room.find(params[:room][:room_id]).fare
 
 			    @reservation = Reservation.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id], status:0, total_amount:total_amount)
 
@@ -69,9 +86,47 @@ class HotelsController < ApplicationController
 			    end
 
 			else
+			    @errors = ["Habitaci&oacute;n no seleccionada"]
+			    @guest.destroy
+			    format.json { render :json => @errors }
+			end
 
-			    @contact = Contact.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id])
-			    
+		    else
+
+			unless params[:room].blank?
+
+			    unless params[:room][:room_id].empty?
+				
+				@contact = Contact.new(room_id: params[:room][:room_id], guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id])
+
+				if @contact.valid?
+
+				    if @contact.save
+
+					format.json {render :json => {:success => true}}
+
+				    end
+
+				else
+
+				    @guest.destroy
+				    @errors = @contact.errors.full_messages
+				    format.json {render :json => @errors}
+
+				end
+
+			    else
+
+				@errors = ['Habitaci&oacute;n no seleccionada']
+				@guest.destroy
+				format.json { render :json => @errors }
+
+			    end
+
+			else
+
+			    @contact = Contact.new(room_id: nil, guest_id:@guest.id, check_in: params[:check_in], check_out: params[:check_out], adults: params[:adults], children: params[:children], comment: params[:comentario], hotel_id: params[:id])
+
 			    if @contact.valid?
 
 				if @contact.save
@@ -84,20 +139,15 @@ class HotelsController < ApplicationController
 
 				@guest.destroy
 
-				@errors = @contact.errors_full_messages
+				@errors = @contact.errors.full_messages
 				format.json {render :json => @errors}
 
 			    end
 
 			end
 
-		    else
-
-			@errors = ["Habitaci&oacute;n no seleccionada"]
-			@guest.destroy
-			format.json { render :json => @errors }
-
 		    end
+
 		end
 	    else
 		@errors = @guest.errors.full_messages

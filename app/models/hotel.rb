@@ -1,7 +1,8 @@
 class Hotel < ActiveRecord::Base
 
-    before_create :create_slug
-
+    #before_create :create_slug
+    before_save :create_slug
+    
     attr_accessible :destination_id, :district, :email, :fare_id, :id, :name, :description, :paypal, :phone, :street, :video, :website, :zipcode, :lat, :lng, :active, :slug, :photos_attributes, :category_ids
     belongs_to :fare 
     belongs_to :destination

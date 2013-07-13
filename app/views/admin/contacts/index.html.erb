@@ -24,7 +24,7 @@
 	    <tr>
 		<td><%= link_to contact.id, admin_contact_path(contact) %></td>
 		<td><%= link_to contact.hotel.name, admin_hotel_path(contact.hotel) %></td>
-		<td><%= link_to contact.room.name, admin_room_path(contact.room_id) %></td>
+		<td><%= contact.room.nil? ? 'Ninguna' : link_to(contact.room.name, admin_room_path(contact.room_id)) %></td>
 		<td><%= contact.guest.nil? ? 'Ninguno' : link_to(contact.guest.name, admin_guest_path(contact.guest)) %></td>
 		<td><%= contact.check_in %></td>
 		<td><%= contact.check_out %></td>

@@ -6,7 +6,7 @@ class Contact < ActiveRecord::Base
 
     #validations
 
-    validates :room, :presence => true
+    #validates :room, :presence => true
     validates :hotel, :presence => true
     validates :guest, :presence => true
 
