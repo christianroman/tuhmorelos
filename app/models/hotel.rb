@@ -17,7 +17,6 @@ class Hotel < ActiveRecord::Base
     has_many :availabilities
     has_many :guests, :through => :reservations
     has_many :photos, :dependent => :destroy
-    has_many :photos, :dependent => :destroy
     accepts_nested_attributes_for :photos, :reject_if => lambda {|t| t['data'].nil?}, :allow_destroy => true
 
     def self.search(destinations, fares, categories, promos)
