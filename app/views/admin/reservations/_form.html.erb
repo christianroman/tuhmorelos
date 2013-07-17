@@ -15,7 +15,7 @@
 		    <%= f.label :room_id, 'Habitación' %>
 		</td>
 		<td>
-		    <%= f.grouped_collection_select :room_id, Hotel.all, :rooms, :name, :id, :name %>
+		    <%= f.grouped_collection_select :room_id, @current_hotel.nil? ? Hotel.all : Array(current_admin_user.hotel), :rooms, :name, :id, :name %>
 		</td>
 	    </tr>
 	    <tr>
