@@ -2,6 +2,8 @@ class Hotel < ActiveRecord::Base
 
     #before_create :create_slug
     before_save :create_slug
+
+    validate :validate_max_categories_have_not_been_reached
     
     attr_accessible :destination_id, :district, :email, :fare_id, :id, :name, :description, :paypal, :phone, :street, :video, :website, :zipcode, :lat, :lng, :active, :slug, :photos_attributes, :category_ids
     belongs_to :fare 
@@ -32,6 +34,10 @@ class Hotel < ActiveRecord::Base
 
     def create_slug
 	self.slug = self.name.parameterize
+    end
+
+    def validate_max_categories_have_not_been_reached
+	errors.add(:base, "No se permite seleccionar mas de 2 categorias. Favor de corregir este error.") unless self.categories.size < 3
     end
 
 end

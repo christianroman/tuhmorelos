@@ -15,4 +15,16 @@ $(function(){
 	return false;
     });
 
+    $('#hotel_description').keyup(function(){
+	var max = 342;
+	var len = $(this).val().length;
+
+	if (len >= max){
+	    $('#charleft').text('Limite de caracteres maximo.');
+	} else {
+	    var ch = max - len;
+	    $('#charleft').text(ch + ' caracteres restantes');
+	}
+    });
+
 });

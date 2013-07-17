@@ -96,7 +96,8 @@
 		<%= f.label :description, 'Descripción' %>
 	    </td>
 	    <td>
-		<%= f.text_area :description, :cols => 20, :rows => 3, :class => 'input-textarea' %>
+		<%= f.text_area :description, :cols => 20, :rows => 3, :class => 'input-textarea', :maxlength => 342 %>
+		<div id="charleft">342 caracteres restantes</div>
 	    </td>
 	</tr>
 	<% if current_admin_user.role?(:super_admin) %>
