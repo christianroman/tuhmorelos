@@ -1,8 +1,9 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :name, :email, :phone
+  attr_accessible :name, :email, :phone, :hotel_id
   has_one :reservation
   has_one :contact
-  has_one :hotel, :through => :reservation
+  #has_one :hotel, :through => :reservation
+  belongs_to :hotel
 
   #validations
   validates :name, :presence => true, :length => { :minimum => 2 }

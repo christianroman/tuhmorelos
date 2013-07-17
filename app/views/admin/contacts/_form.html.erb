@@ -23,7 +23,7 @@
 		    <%= f.label :guest_id, 'Cliente' %>
 		</td>
 		<td>
-		    <%= collection_select :reservation, :guest_id, Guest.all, :id, :name, {}, { :class => 'input-select' } %>
+		    <%= f.grouped_collection_select :guest_id, @current_hotel.nil? ? Hotel.all : Array(current_admin_user.hotel), :guests, :name, :id, :name %>
 		</td>
 	    </tr>
 	    <tr>
