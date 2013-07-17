@@ -34,7 +34,7 @@ class HotelsController < ApplicationController
 
     def create
 
-	@guest = Guest.new(name: params[:nombre], email: params[:email], phone: params[:telefono])
+	@guest = Guest.new(name: params[:nombre], email: params[:email], phone: params[:telefono], hotel_id: params[:id])
 
 	respond_to do |format|
 
