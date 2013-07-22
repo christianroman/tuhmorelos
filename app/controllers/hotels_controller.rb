@@ -56,6 +56,10 @@ class HotelsController < ApplicationController
 			    if @reservation.valid?
 				if @reservation.save
 
+				    if Rails.env.production?
+					ActionMailer::Base.mail(:from => "tuhotelenmorelos@gmail.com", :to => Hotel.find(params[:id].email), :subject => "Nueva reservacion", :body => "Se ha realizado una nueva reservacion a traves del portal. Favor de revisar").deliver
+				    end
+
 				    return_url = root_url
 
 				    values = {
@@ -102,6 +106,10 @@ class HotelsController < ApplicationController
 				if @contact.valid?
 
 				    if @contact.save
+					
+					if Rails.env.production?
+					    ActionMailer::Base.mail(:from => "tuhotelenmorelos@gmail.com", :to => Hotel.find(params[:id].email), :subject => "Nueva solicitud de informacion", :body => "Se ha realizado una nueva solicitud de informacion a traves del portal. Favor de revisar").deliver
+					end
 
 					format.json {render :json => {:success => true}}
 
