@@ -35,7 +35,7 @@ Tuhmorelos::Application.routes.draw do
 
 	resources :home, :only => [:index]
 
-	resources :hotels, :only => [:index, :show], :path => 'hoteles'
+	resources :hotels, :only => [:index, :show, :create], :path => 'hoteles'
 	resources :destinations, :only => [:index], :path => 'destinos'
 	resources :categories, :only => [:index], :path => 'categorias'
 	resources :fares, :only => [:index], :path => 'tarifas'
