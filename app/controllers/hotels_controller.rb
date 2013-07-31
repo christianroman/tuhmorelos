@@ -158,8 +158,10 @@ class HotelsController < ApplicationController
 
 		end
 	    else
+
 		@errors = @guest.errors.full_messages
 		format.json { render :json => @errors }
+
 	    end
 
 	end
