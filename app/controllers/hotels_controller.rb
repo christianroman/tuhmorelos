@@ -111,7 +111,7 @@ class HotelsController < ApplicationController
 					    ActionMailer::Base.mail(:from => "tuhotelenmorelos@gmail.com", :to => Hotel.find(params[:id]).email, :subject => "Nueva solicitud de informacion", :body => "Se ha realizado una nueva solicitud de informacion a traves del portal. Favor de revisar").deliver
 					end
 
-					format.json {render :json => {:success => true}}
+					format.json { render :json => {:success => true} }
 
 				    end
 
