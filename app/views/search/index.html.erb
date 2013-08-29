@@ -19,7 +19,7 @@
 	    <%= hotel.email %><br />
 
 	    <!--<%= link_to "Reserva en línea", root_url(subdomain:hotel.slug), :class => "btn btn-purple" %>-->
-	    <%= link_to hotel.paypal.blank? ? 'Solicita información' : 'Reserva en línea', root_url(subdomain:hotel.slug), :class => 'btn btn-purple' %>
+	    <%= link_to hotel.paypal.blank? ? 'Solicita información' : 'Reserva en línea', root_url(subdomain:hotel.slug.gsub('-', '')), :class => 'btn btn-purple' %>
 	    <a href="<%= "http://#{hotel.website}" %>" class="btn btn-green" target="_blank">Visitar sitio web</a>
 
 	</div>
